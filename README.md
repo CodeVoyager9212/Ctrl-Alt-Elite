@@ -11,7 +11,7 @@
 **First Last Names, ID:** Arman Soheili (40299968)  
 **GitHub Username:** arman-shl
 
-**First Last Names, ID:** Anas Lahna (40285401) 
+**First Last Names, ID:** Anas Lahna (40285401)  
 **GitHub Username:** Lahanas
 
 **First Last Names, ID:** Omar El Akrae   
