@@ -43,7 +43,7 @@
 - Each group should begin working on their assigned part and progress will be discussed during the upcoming meetings.
 --------------------------------------------------------------------------------------------------------------------------------------------
 # Meeting 4 – September 20, 2026
-**Duration:** 2 hours
+**Duration:** 3 hours
 
 **Members Present:** Philopater, Peter
 ### Discussion
