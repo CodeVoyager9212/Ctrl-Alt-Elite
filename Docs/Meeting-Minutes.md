@@ -42,7 +42,27 @@
 - **Group 3 – Arman & Alfred:** General website UI, excluding the profile page.
 - Each group should begin working on their assigned part and progress will be discussed during the upcoming meetings.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 4 – September 27, 2026
+# Meeting 4 – September 20, 2026
+**Duration:** 2 hours
+
+**Members Present:** Philopater, Peter
+### Discussion
+- Worked together on the user registration and authentication feature assigned for Sprint 1.
+- Set up the frontend of the website using React in Visual Studio Code.
+- Created and worked on the landing page, login page and sign-up page, including some of the general UI for these pages.
+- Set up Supabase and connected it to the project to support user account creation, authentication and storage of account information in the database.
+- Created and organized the main frontend files and folders needed for the current implementation, including:
+    - components: ApplicationPreview.tsx, NavBar.tsx
+    - lib: supabase.ts
+    - pages: LandingPage.tsx, LoginPage.tsx, ProfilePage.css, ProfilePage.tsx, SignupPage.tsx
+    - Other files: App.css, App.tsx, index.css, .env.local, .env.example
+### Decisions/Action Items
+- Continue developing the registration, authentication and profile management functionality.
+- Continue integrating the React frontend with Supabase for user accounts and database storage.
+- Test the sign-up and login functionality to make sure accounts are correctly created and authenticated through Supabase.
+- Continue improving the UI and completing the remaining parts of the assigned Sprint 1 feature.
+--------------------------------------------------------------------------------------------------------------------------------------------
+# Meeting 5 – September 27, 2026
 **Duration:** 1 hour
 
 **Members Present:** Philopater, Peter, Alfred, Arman, Anas, Omar
