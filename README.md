@@ -18,8 +18,8 @@
 **Full Name, ID:** Anas Lahna (40285401)  
 **GitHub Username:** Lahanas
 
-**Full Name, ID:** Omar El Akrae   
-**GitHub Username:** 
+**Full Name, ID:** Omar El Akrae  (40252799) 
+**GitHub Username:** Omar01-E
 
 ---
 ## Project Description
