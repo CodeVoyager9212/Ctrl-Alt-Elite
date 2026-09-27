@@ -8,6 +8,9 @@
 **First Last Names, ID:** Peter Chababi (40283304)  
 **GitHub Username:** PChababi
 
+**First Last Names, ID:** Alfred Zaid (40287593)  
+**GitHub Username:** EngrAlfred
+
 **First Last Names, ID:** Arman Soheili (40299968)  
 **GitHub Username:** arman-shl
 
