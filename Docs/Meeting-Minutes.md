@@ -42,6 +42,22 @@
 - **Group 3 – Arman & Alfred:** General website UI, excluding the profile page.
 - Each group should begin working on their assigned part and progress will be discussed during the upcoming meetings.
 --------------------------------------------------------------------------------------------------------------------------------------------
+# Meeting 4 – September 27, 2026
+**Duration:** 1 hour
 
+**Members Present:** Philopater, Peter, Alfred, Arman, Anas, Omar
+### Discussion
+- Reviewed the work completed by each group and discussed the overall progress of Sprint 1.
+- Discussed improvements or changes that should be made before the final submission.
+- Went through the Sprint 1 requirements to make sure all required work was completed.
+- Proofread the documentation and checked the GitHub repository for mistakes or missing information.
+- Continued working on any remaining tasks that needed to be completed before submission.
+### Decisions/Action Items
+- Each group should make the final changes discussed during the meeting.
+- Complete any remaining Sprint 1 tasks and documentation.
+- Make sure all required files and information are included in the GitHub repository.
+- Perform a final review of the project before submission.
+- Submit the completed Sprint 1 work before the deadline.
+--------------------------------------------------------------------------------------------------------------------------------------------
 
 
