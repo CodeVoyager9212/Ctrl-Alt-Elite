@@ -3,22 +3,22 @@
 ### CareerConnect
 ---
 ## Team Members
-**First Last Names, ID:** Philopater Salama (40229661)  
+**Full Name, ID:** Philopater Salama (40229661)  
 **GitHub Username:** CodeVoyager9212
 
-**First Last Names, ID:** Peter Chababi (40283304)  
+**Full Name, ID:** Peter Chababi (40283304)  
 **GitHub Username:** PChababi
 
-**First Last Names, ID:** Alfred Zaid (40287593)  
+**Full Name, ID:** Alfred Zaid (40287593)  
 **GitHub Username:** EngrAlfred
 
-**First Last Names, ID:** Arman Soheili (40299968)  
+**Full Name, ID:** Arman Soheili (40299968)  
 **GitHub Username:** arman-shl
 
-**First Last Names, ID:** Anas Lahna (40285401)  
+**Full Name, ID:** Anas Lahna (40285401)  
 **GitHub Username:** Lahanas
 
-**First Last Names, ID:** Omar El Akrae   
+**Full Name, ID:** Omar El Akrae   
 **GitHub Username:** 
 
 ---
