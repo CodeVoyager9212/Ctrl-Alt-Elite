@@ -67,4 +67,4 @@ CareerConnect provides one platform where job seekers can manage their job searc
 
 ---
 ## Setup Instructions
-Need to include setup instructions!!!
+To run CareerConnect, make sure Git, Node.js, and npm are installed. Clone the repository and open the project folder, then run `npm ci` to install the required dependencies. Create a `.env.local` file and add the Supabase URL and publishable key to connect the application to the backend. The required database setup is included in the Supabase migration file in the repository. Finally, run `npm run dev` and open the local address shown in the terminal to access CareerConnect.
