@@ -392,6 +392,31 @@ a.button {
   margin-top: -4px;
 }
 
+.auth-message {
+  margin: 0;
+  padding: 11px 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.auth-message--error {
+  background-color: #fce8e6;
+  color: #9c2f27;
+}
+
+.auth-message--success {
+  background-color: #e6f3e9;
+  color: var(--green-dark);
+}
+
+.auth-form button:disabled,
+.auth-form input:disabled,
+.sidebar-signout:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 /* Account type selector */
 
 .account-type {

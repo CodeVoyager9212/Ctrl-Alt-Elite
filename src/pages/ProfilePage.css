@@ -155,6 +155,16 @@
   font-weight: 500;
 }
 
+.profile-status,
+.profile-main > .auth-message {
+  margin-bottom: 16px;
+}
+
+.profile-status {
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
 .profile-form {
   display: grid;
   grid-template-columns: 325px minmax(0, 1fr);
@@ -277,6 +287,17 @@
 .form-group textarea:focus {
   border-color: var(--green);
   box-shadow: 0 0 0 3px rgba(47, 111, 78, 0.1);
+}
+
+.form-group textarea::placeholder {
+  color: #b1a89d;
+}
+
+.profile-form input:disabled,
+.profile-form textarea:disabled,
+.profile-form button:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
 }
 
 /* Job preferences */

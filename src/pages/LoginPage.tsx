@@ -1,15 +1,46 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { supabase } from "../lib/supabase";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
+    if (loading) return;
 
-    // We will connect this to Supabase later.
-    console.log({ email, password });
+    setErrorMessage("");
+    setLoading(true);
+
+    try {
+      const { error } = await supabase.auth.signInWithPassword({
+        email: email.trim().toLowerCase(),
+        password,
+      });
+
+      if (error) {
+        if (error.message.toLowerCase().includes("invalid login credentials")) {
+          setErrorMessage("The email or password is incorrect.");
+        } else if (error.message.toLowerCase().includes("email not confirmed")) {
+          setErrorMessage("Please confirm your email before logging in.");
+        } else {
+          setErrorMessage(error.message);
+        }
+        return;
+      }
+
+      navigate("/profile", { replace: true });
+    } catch {
+      setErrorMessage(
+        "Unable to reach the authentication service. Please try again.",
+      );
+    } finally {
+      setLoading(false);
+    }
   }
 
   return (
@@ -40,6 +71,8 @@ function LoginPage() {
                 placeholder="you@example.com"
                 value={email}
                 onChange={(event) => setEmail(event.target.value)}
+                autoComplete="email"
+                disabled={loading}
                 required
               />
             </div>
@@ -53,13 +86,25 @@ function LoginPage() {
                 placeholder="At least 6 characters"
                 value={password}
                 onChange={(event) => setPassword(event.target.value)}
+                autoComplete="current-password"
+                disabled={loading}
                 minLength={6}
                 required
               />
             </div>
 
-            <button className="button button--primary auth-submit" type="submit">
-              Log in
+            {errorMessage && (
+              <p className="auth-message auth-message--error" role="alert">
+                {errorMessage}
+              </p>
+            )}
+
+            <button
+              className="button button--primary auth-submit"
+              type="submit"
+              disabled={loading}
+            >
+              {loading ? "Logging in..." : "Log in"}
             </button>
           </form>
         </section>
