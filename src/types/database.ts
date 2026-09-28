@@ -33,6 +33,30 @@ type ProfileInsert = {
 
 type ProfileUpdate = Partial<ProfileInsert>;
 
+export type ResumeRow = {
+  id: string;
+  user_id: string;
+  label: string;
+  file_name: string;
+  file_path: string;
+  file_size: number;
+  is_primary: boolean;
+  created_at: string;
+};
+
+type ResumeInsert = {
+  id?: string;
+  user_id: string;
+  label?: string;
+  file_name: string;
+  file_path: string;
+  file_size?: number;
+  is_primary?: boolean;
+  created_at?: string;
+};
+
+type ResumeUpdate = Partial<ResumeInsert>;
+
 export type Database = {
   public: {
     Tables: {
@@ -40,6 +64,12 @@ export type Database = {
         Row: ProfileRow;
         Insert: ProfileInsert;
         Update: ProfileUpdate;
+        Relationships: [];
+      };
+      resumes: {
+        Row: ResumeRow;
+        Insert: ResumeInsert;
+        Update: ResumeUpdate;
         Relationships: [];
       };
     };

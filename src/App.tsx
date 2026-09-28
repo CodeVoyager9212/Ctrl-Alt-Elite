@@ -11,6 +11,7 @@ import LandingPage from "./pages/LandingPage";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ProfilePage from "./pages/ProfilePage";
+import ResumePage from "./pages/ResumePage";
 import { supabase } from "./lib/supabase";
 import "./App.css";
 
@@ -95,6 +96,16 @@ function App() {
             <ProtectedRoute loading={authLoading} session={session}>
               {session && (
                 <ProfilePage key={session.user.id} user={session.user} />
+              )}
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/resumes"
+          element={
+            <ProtectedRoute loading={authLoading} session={session}>
+              {session && (
+                <ResumePage key={session.user.id} user={session.user} />
               )}
             </ProtectedRoute>
           }
