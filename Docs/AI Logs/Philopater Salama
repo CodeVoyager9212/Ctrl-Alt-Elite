@@ -1,1 +1,116 @@
+Task 1: Understanding the CareerConnect Website and UI
+Purpose of AI Use:
+Requirements clarification and UI brainstorming.
+Prompt/Response:
+Prompt:  
+Can in like plain English tell me what the website is and like what it should look like, not colors and stuff, but as in the UI, how would the UI be?
 
+Relevant AI Response:  
+CareerConnect would basically be a website that keeps everything related to a user's job search in one place. A job seeker would have a dashboard where they can see their applications and their current statuses, such as Applied, Interview, Offered, or Rejected.  
+The website could have separate areas for searching and filtering jobs, viewing individual job postings, saving jobs, submitting applications, managing a profile and résumé, and viewing application history. Recruiters would have their own functionality for creating job postings, viewing applicants, and updating application statuses.  
+The UI could use a dashboard-style layout with navigation between the main sections. Job opportunities could be displayed as cards or a list, while applications could be displayed in an organized list or dashboard showing their current status. The goal would be to make the different CareerConnect features easy for the user to find and manage.
+
+AI-Suggested Content:
+AI helped translate the written CareerConnect requirements into a simpler idea of what the website could look like from a user's perspective. It suggested possible pages and interface sections such as a dashboard, job listings, application tracking, profiles, résumé management, and recruiter functionality.
+Validation:
+I compared the suggestions with the official CareerConnect project requirements to make sure they matched the required functionality. The project specification describes CareerConnect as a web-based platform for job seekers and recruiters and includes features such as profiles, résumé management, job searching, applications, status tracking, application history, notifications, and saved jobs. The exact organization and design of the interface were still decisions for our team.
+Decision:
+Modified before use.
+Reflection:
+The interaction was useful for helping me visualize how the written project requirements could translate into an actual website. I used the suggestions as examples to better understand the project rather than as a final UI design. The actual interface and organization of the website were still discussed and decided by the team.
+Responsible Person:
+Philopater Salama
+
+
+Task 2: Framework Research and Comparison
+Purpose of AI Use:
+Research and comparison of possible development frameworks for CareerConnect.
+Prompt/Response:
+Prompt 1:  
+What do you think is a good framework to do this project in full?
+
+Relevant AI Response:  
+A possible stack for CareerConnect would be Next.js with TypeScript and Supabase. Next.js is built on React and can support both the website interface and server-side functionality, while Supabase can provide services such as the database, authentication, and file storage.
+
+Prompt 2:  
+Why not Flutter? Isn't Flutter easier though since it's just 1 thing while React has many components to it?
+
+Relevant AI Response:  
+Flutter can feel simpler because it provides one consistent system for building the interface, but using Flutter would not eliminate the need for other services. The project would still need a database, authentication, résumé storage, backend/security logic, hosting, and an AI service.
+Since CareerConnect is specifically described as a web-based platform, Next.js is designed directly for this type of website. Flutter could still be used, especially for a project targeting multiple platforms, but its main cross-platform advantage may be less important for a web-only project.
+React components are also not separate technologies that all need to be learned individually. Components are reusable pieces of the interface, similar to widgets in Flutter.
+
+Follow-up Prompt:  
+But the group haven't used both so we starting from nothing and we know like C++ mainly that we learnt in previous classes.
+
+Relevant AI Response:  
+If everyone is starting without previous experience in either framework, the decision can be based more on the requirements of the project rather than existing framework experience. Next.js with TypeScript is one option because CareerConnect is a web application. Some programming concepts from C++, such as variables, functions, conditions, loops, classes, objects, and types, will also be familiar when learning TypeScript. The team would still need to learn web-development concepts and React regardless.
+
+AI-Suggested Content:
+AI compared Next.js/React and Flutter as possible technologies for CareerConnect. It explained some of the differences between the two approaches and identified factors to consider, including that CareerConnect is a web application, the additional backend services required regardless of framework, and the team's existing programming experience.
+Validation:
+I questioned the initial suggestion by asking specifically about Flutter and then provided additional information about the team's experience with C++. I compared the explanations with the actual project requirements instead of selecting a framework solely based on the AI response. The CareerConnect specification confirms that the required product is a web-based platform. The framework choice was then considered based on the team's needs and project requirements.
+Decision:
+Modified before use.
+Reflection:
+The interaction helped me understand the differences between React/Next.js and Flutter and what would still be required regardless of the framework selected. Asking follow-up questions was useful because it allowed me to consider another option instead of simply accepting the first suggestion. The AI comparison was used as research to support our discussion, while the final technology choices remained a team decision.
+Responsible Person:
+Philopater Salama
+
+
+Task 3: React Development Environment Setup
+Purpose of AI Use:
+Development environment setup and troubleshooting.
+Prompt/Response:
+Prompt:  
+how do i get started with react on vscode
+
+Relevant AI Response:  
+The suggested setup was to install Node.js, verify Node and npm from the terminal, create a React project using Vite with TypeScript, install the dependencies, and run the development server using npm run dev.
+
+Follow-up Prompt:  
+PS E:\Desktop\CareerConnect> node --version
+v24.15.0
+PS E:\Desktop\CareerConnect> npm --version
+11.12.1
+
+Relevant AI Response:  
+Node.js and npm were installed correctly. Since the terminal was already inside the CareerConnect folder, the React project could be created in the current directory using Vite.
+
+AI-Suggested Content:
+AI provided general setup instructions for creating a React and TypeScript development environment using VS Code, Node.js, npm, and Vite.
+Validation:
+I ran the suggested commands myself in the VS Code terminal, verified that Node.js and npm were installed, created the project, and confirmed that the development server started successfully in the browser.
+Decision:
+Accepted.
+Reflection:
+The interaction helped me become familiar with the initial React development workflow and the purpose of tools such as Node.js, npm, and Vite. The setup was verified by actually running the project rather than relying only on the instructions.
+Responsible Person:
+Philopater Salama
+
+
+Task 4: Supabase Backend Configuration
+Purpose of AI Use:
+Backend setup guidance and configuration review.
+Prompt/Response:
+Prompt:  
+for the back end of the website or the database which should i keep on
+
+Relevant AI Response:  
+For your CareerConnect Supabase database, keep these settings:
+Region: Canada (Central)
+Enable Data API: On
+Automatically expose new tables: Turn off
+Enable automatic RLS: On  
+You can configure access policies later when building authentication and database features.
+
+AI-Suggested Content:
+AI explained the purpose of some of the Supabase project configuration options and suggested initial settings for the CareerConnect backend, particularly enabling the Data API and Row Level Security while limiting automatic table exposure.
+Validation:
+I reviewed the available Supabase settings myself before creating the project and checked that the backend project was successfully created with the selected configuration. The settings were treated as setup guidance rather than automatically accepted without review.
+Decision:
+Accepted after verification.
+Reflection:
+The interaction helped me understand what the different Supabase configuration options were used for before creating the backend project. It was useful mainly for clarification because I was unfamiliar with some of the settings, while I still completed and verified the setup myself.
+Responsible Person:
+Philopater Salama
