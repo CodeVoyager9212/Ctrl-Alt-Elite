@@ -1,8 +1,8 @@
-#User Stories
-##AI-generated stories
+# User Stories
+## AI-generated stories
 p
 ...
 
-##Team-generated user stories
+## Team-generated user stories
 p
 ...
