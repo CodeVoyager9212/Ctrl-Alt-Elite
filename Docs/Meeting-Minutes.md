@@ -63,7 +63,7 @@
 - Continue improving the UI and completing the remaining parts of the assigned Sprint 1 feature.
 --------------------------------------------------------------------------------------------------------------------------------------------
 # Meeting 5 – September 27, 2026
-**Duration:** 1 hour
+**Duration:** 3 hour
 
 **Members Present:** Philopater, Peter, Alfred, Arman, Omar
 ### Discussion
