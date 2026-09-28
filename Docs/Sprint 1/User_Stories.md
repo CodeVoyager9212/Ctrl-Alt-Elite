@@ -1,5 +1,4 @@
 # User Stories
---------------------------------------------------------------------------------------------------------------------------------------------
 ## AI-generated stories
 1. As a job seeker, I want to receive reminders before a saved job’s application deadline so that I do not miss an opportunity I intended to apply for.
 2. As a job seeker, I want to maintain a daily job-search streak by completing at least one meaningful activity each day so that I remain consistent and motivated throughout my job search.
