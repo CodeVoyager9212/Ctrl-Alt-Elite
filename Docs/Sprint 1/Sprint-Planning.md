@@ -36,10 +36,24 @@ Team members also contribute to planning, documentation, testing, and reviewing 
 - Team members may have different availability during the sprint.
 - Bugs or technical problems may delay some features.
 - Some requirements may need changes after team discussions or testing.
-
 ## Sprint 1 Work Plan
 
-The work plan summarizes the GitHub Issues planned for Sprint 1 and will be updated as the team creates and assigns the remaining issues.
+The following table summarizes the GitHub Issues planned for Sprint 1 and will be updated as the team assigns and completes the remaining issues.
 
-| Issue # | Issue Title | Issue Type | Responsible Member | Target Completion Date | Priority | Current Status |
-|---------|-------------|------------|--------------------|-----------------------|----------|----------------|
+| Issue # | Issue Title | Issue Type | Responsible Member | Priority | Current Status |
+|---------|-------------|------------|--------------------|----------|----------------|
+| #1 | User Login | User Story | Philopater | High | Completed | 
+| #2 | User Registration | User Story | Peter | High | Completed |
+| #3 | Resume Upload | User Story | Peter | High | Completed |
+| #4 | Compare Jobs | User Story | Arman | Medium | Not Started |
+| #5 | Application Status Duration | User Story | Arman | Medium | In Progress |
+| #6 | Saved Job Deadline Reminders | User Story | Philopater | Medium | Not Started |
+| #7 | Daily Job-Search Streak | User Story | Philopater | Low | In Progress |
+| #8 | Job Search and Filters | User Story | Anas | High | Not Started |
+| #9 | Save Job Posting | User Story | Anas | Medium | In Progress |
+| #10 | Application Tracking | User Story | Omar | High | In Progress |
+| #11 | Mock Interview Practice | User Story | Arman | Low | Not Started |
+| #12 | Edit Profile | User Story | Alfred | Medium | In Progress |
+| #13 | Post a Job | User Story | Alfred | High | Not Started |
+| #14 | View Applicants | User Story | Anas | High | Not Started |
+| #15 | Update Application Status | User Story | Omar | High | Not Started  |
