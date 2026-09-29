@@ -41,7 +41,7 @@ Team members also contribute to planning, documentation, testing, and reviewing 
 The following table summarizes the GitHub Issues planned for Sprint 1 and will be updated as the team assigns and completes the remaining issues.
 
 | Issue # | Issue Title | Issue Type | Responsible Member | Target Completion Date | Priority | Current Status |
-|---------|-------------|------------|--------------------|----------|----------------|
+|---------|-------------|------------|--------------------|------------------------|----------|----------------|
 | #1 | User Login | User Story | Philopater | September 27, 2026 | High | Completed | 
 | #2 | User Registration | User Story | Peter | September 27, 2026 | High | Completed |
 | #3 | Resume Upload | User Story | Peter | September 28, 2026 | High | Completed |
