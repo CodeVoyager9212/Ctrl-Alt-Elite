@@ -40,20 +40,20 @@ Team members also contribute to planning, documentation, testing, and reviewing 
 
 The following table summarizes the GitHub Issues planned for Sprint 1 and will be updated as the team assigns and completes the remaining issues.
 
-| Issue # | Issue Title | Issue Type | Responsible Member | Priority | Current Status |
+| Issue # | Issue Title | Issue Type | Responsible Member | Target Completion Date | Priority | Current Status |
 |---------|-------------|------------|--------------------|----------|----------------|
-| #1 | User Login | User Story | Philopater | High | Completed | 
-| #2 | User Registration | User Story | Peter | High | Completed |
-| #3 | Resume Upload | User Story | Peter | High | Completed |
-| #4 | Compare Jobs | User Story | Arman | Medium | Not Started |
-| #5 | Application Status Duration | User Story | Arman | Medium | In Progress |
-| #6 | Saved Job Deadline Reminders | User Story | Philopater | Medium | Not Started |
-| #7 | Daily Job-Search Streak | User Story | Philopater | Low | In Progress |
-| #8 | Job Search and Filters | User Story | Anas | High | Not Started |
-| #9 | Save Job Posting | User Story | Anas | Medium | In Progress |
-| #10 | Application Tracking | User Story | Omar | High | In Progress |
-| #11 | Mock Interview Practice | User Story | Arman | Low | Not Started |
-| #12 | Edit Profile | User Story | Alfred | Medium | In Progress |
-| #13 | Post a Job | User Story | Alfred | High | Not Started |
-| #14 | View Applicants | User Story | Anas | High | Not Started |
-| #15 | Update Application Status | User Story | Omar | High | Not Started  |
+| #1 | User Login | User Story | Philopater | September 27, 2026 | High | Completed | 
+| #2 | User Registration | User Story | Peter | September 27, 2026 | High | Completed |
+| #3 | Resume Upload | User Story | Peter | September 28, 2026 | High | Completed |
+| #4 | Compare Jobs | User Story | Arman | October 2, 2026 | Medium | Not Started |
+| #5 | Application Status Duration | User Story | Arman | September 30, 2026 | Medium | In Progress |
+| #6 | Saved Job Deadline Reminders | User Story | Philopater | October 2, 2026 | Medium | Not Started |
+| #7 | Daily Job-Search Streak | User Story | Philopater | October 3, 2026 | Low | In Progress |
+| #8 | Job Search and Filters | User Story | Anas | September 30, 2026 | High | Not Started |
+| #9 | Save Job Posting | User Story | Anas | September 30, 2026 | Medium | In Progress |
+| #10 | Application Tracking | User Story | Omar | September 29, 2026 | High | In Progress |
+| #11 | Mock Interview Practice | User Story | Arman | October 4, 2026 | Low | Not Started |
+| #12 | Edit Profile | User Story | Alfred | September 30, 2026 | Medium | In Progress |
+| #13 | Post a Job | User Story | Alfred | October 1, 2026 | High | Not Started |
+| #14 | View Applicants | User Story | Anas | October 2, 2026 | High | Not Started |
+| #15 | Update Application Status | User Story | Omar | October 1, 2026 | High | Not Started  |
