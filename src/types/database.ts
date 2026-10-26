@@ -60,26 +60,41 @@ type ResumeUpdate = Partial<ResumeInsert>;
 export type JobRow = {
   id: string;
   title: string;
-  company: string;
+  company_name: string;
   location: string;
+  work_mode: "Remote" | "Hybrid" | "On-site";
   category: string;
-  job_type: string;
+  employment_type:
+    | "Full-time"
+    | "Part-time"
+    | "Contract"
+    | "Internship"
+    | "Temporary";
+  salary_min: number | null;
+  salary_max: number | null;
+  salary_currency: string | null;
+  salary_period: "Hourly" | "Monthly" | "Yearly" | null;
+  summary: string;
   description: string;
-  posted_by: string | null;
+  requirements: string | null;
+  responsibilities: string | null;
+  recruiter_id: string | null;
+  posted_at: string;
+  is_active: boolean;
   created_at: string;
 };
 
-type JobInsert = {
+export type JobInsert = Omit<
+  JobRow,
+  "id" | "created_at" | "posted_at" | "is_active"
+> & {
   id?: string;
-  title: string;
-  company: string;
-  location?: string;
-  category?: string;
-  job_type?: string;
-  description?: string;
-  posted_by?: string | null;
   created_at?: string;
+  posted_at?: string;
+  is_active?: boolean;
 };
+
+export type JobUpdate = Partial<JobInsert>;
 
 export type ApplicationStatus =
   | "Applied"
@@ -94,7 +109,6 @@ export type ApplicationRow = {
   user_id: string;
   resume_id: string | null;
   resume_file_name: string;
-  cover_letter: string;
   status: ApplicationStatus;
   applied_at: string;
   status_changed_at: string;
@@ -104,9 +118,8 @@ type ApplicationInsert = {
   id?: string;
   job_id: string;
   user_id: string;
-  resume_id?: string | null;
+  resume_id: string;
   resume_file_name?: string;
-  cover_letter?: string;
   status?: "Applied";
 };
 
@@ -132,7 +145,7 @@ export type Database = {
       jobs: {
         Row: JobRow;
         Insert: JobInsert;
-        Update: Partial<JobInsert>;
+        Update: JobUpdate;
         Relationships: [];
       };
       applications: {

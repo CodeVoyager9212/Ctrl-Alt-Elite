@@ -1,0 +1,61 @@
+.placeholder-page {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 26px 30px 60px;
+}
+
+.placeholder-page__heading {
+  margin-bottom: 24px;
+}
+
+.placeholder-page__heading p {
+  margin: 0 0 7px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.placeholder-page__heading h1 {
+  margin: 0;
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.placeholder-page__card {
+  padding: 20px;
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  background-color: var(--white);
+}
+
+.placeholder-page__card h2 {
+  margin: 0 0 20px;
+  color: var(--text);
+  font-family: Georgia, serif;
+  font-size: 21px;
+  font-weight: 600;
+}
+
+.placeholder-page__description {
+  margin: 0;
+  color: var(--muted-text);
+  line-height: 1.7;
+}
+
+@media (max-width: 950px) {
+  .placeholder-page {
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  .placeholder-page {
+    padding: 24px 16px 45px;
+  }
+}
