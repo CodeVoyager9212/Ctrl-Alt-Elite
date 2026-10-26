@@ -45,19 +45,18 @@ Team members also help with improving existing features, acceptance testing, Git
 
 ## Sprint 2 Work Plan
 
-The following table summarizes the main work planned for Sprint 2. The GitHub Issue numbers, responsible members, target dates, and task status will be updated as the team organizes and completes the work.
+The following table summarizes the GitHub Issues and tasks planned for Sprint 2. It includes features continued from Sprint 1 and new features added during Sprint 2. The team will update the work plan based on development progress.
 
 | Issue # | Issue Title | Issue Type | Responsible Member | Target Completion Date | Priority | Current Status |
 |---------|-------------|------------|--------------------|------------------------|----------|----------------|
-| TBD | Profile Management Improvements | User Story | TBD | TBD | High | TBD |
-| TBD | Resume Management Improvements | User Story | TBD | TBD | High | TBD |
-| #8 | Job Search and Filters | User Story | Group 1 | TBD | High | TBD |
-| TBD | View Job Details | User Story | Group 1 | TBD | High | TBD |
-| TBD | Submit Job Application | User Story | Group 2 | TBD | High | TBD |
-| #10 | Application Tracking | User Story | Group 2 | TBD | High | TBD |
-| TBD | Application Submission Confirmation | User Story | Group 2 | TBD | High | TBD |
-| TBD | Recruiter Dashboard | User Story | TBD | TBD | Medium | TBD |
-| #13 | Post and Manage Jobs | User Story | TBD | TBD | Medium | TBD |
-| #14 | View Applicants | User Story | TBD | TBD | Medium | TBD |
-| TBD | Acceptance Tests | Task | All Members | TBD | High | TBD |
-| TBD | Continuous Integration Setup | Task | TBD | TBD | High | TBD |
+| #14 | Edit Profile | User Story | Alfred | October 25, 2026 | High | To Verify |
+| #3 | Resume Upload | User Story | Peter | October 25, 2026 | High | Sprint 1 completed; review needed |
+| #10 | Job Search and Filters | User Story | Group 1 | October 25, 2026 | High | To Verify |
+| #11 | Save Job Posting | User Story | Group 1 | October 25, 2026 | Medium | To Verify |
+| #21 | Submit a Job Application | User Story | Group 2 | October 25, 2026 | High | To Verify |
+| #12 | Application Tracking | User Story | Group 2 | October 25, 2026 | High | To Verify |
+| #25 | Confirmation of Successful Submission | User Story | Group 2 | October 25, 2026 | High | To Verify |
+| #17 | Update Application Status | User Story | Group 2 | October 25, 2026 | High | To Verify |
+| #15 | Post a Job | User Story | Alfred | November 19, 2026 | Medium | Planned for Sprint 3 |
+| #16 | View Applicants | User Story | Anas | November 21, 2026 | Medium | Planned for Sprint 3 |
+| PR #18 | Continuous Integration Setup | Task | Arman | October 25, 2026 | High | Completed |

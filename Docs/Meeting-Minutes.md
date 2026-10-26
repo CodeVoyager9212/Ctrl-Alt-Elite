@@ -123,9 +123,9 @@
 - Update the team on progress and prepare the completed work for review at the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
 ## Meeting 9 – October 25, 2026
-**Duration:** 3 hours
+**Duration:** 4 hours
 
-**Members Present:** Philopater, Peter, Alfred, Arman
+**Members Present:** Philopater, Peter, Alfred, Arman, Omar
 ### Discussion
 - Reviewed the work completed by each team member during Sprint 2.
 - Checked the implemented features to make sure they worked correctly and followed the project requirements.

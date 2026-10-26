@@ -6,53 +6,50 @@ Requirement (Sprint 2, feature 3):
 - Track application status (Applied, Under Review, Interview, Offered, Rejected).
 - Provide confirmation of successful application submission.
 
-How it works:
-- **Find Jobs → job details → Easy Apply:** the user picks one of the résumés they already uploaded on **My Résumés** (Sprint 1, primary résumé selected by default) and applies in one click. The application is saved in Supabase.
-- **Confirmation:** the details panel right away shows "Application sent!" with the résumé sent, date, reference number and status. Jobs already applied to show "You applied to this job" with the current status.
-- **My Applications** (`/applications`, replaces the placeholder): only the jobs the user applied to, with status, progress tracker and filters.
-
-Code: `src/components/jobs/EasyApply.tsx` (+ `.css`), `src/pages/ApplicationsPage.tsx` (+ `.css`), `src/lib/applications.ts`.
-Database: `supabase/migrations/202610250001_create_applications.sql` creates `applications` and its security rules. It uses the existing `profiles`, `resumes` and `jobs` tables.
+Pages: `/jobs/:jobId/apply` (apply), `/applications/:id/confirmation` (confirmation), `/applications` (My Applications).
+Database: `supabase/migrations/202610250001_create_applications.sql` (`jobs` if it doesn't exist yet, `applications`, security rules).
+Builds on Sprint 1: applications use the résumés from the `resumes` table (My Résumés page).
 
 Each story and acceptance test below is created as its own GitHub Issue.
 Labels: `user story` or `acceptance test`, plus `sprint 2` and `feature: applications`. Each acceptance test links to its story (`Relates to #<story>`).
 
 ---
 
-## User Story A – Apply to a job (Easy Apply)
-**As a** job seeker, **I want to** apply to a job in one click with a résumé I already uploaded **so that** recruiters can review my application.
+## User Story A – Submit a job application
+**As a** job seeker, **I want to** apply to a job posting with one of my uploaded résumés and an optional cover letter **so that** recruiters can review my application.
 
 **Tasks**
 - [ ] Create the `applications` table with security rules (migration)
-- [ ] Easy Apply box in the Find Jobs details panel with a résumé picker (primary résumé selected)
+- [ ] Apply page: job details, résumé picker (primary résumé pre-selected), cover letter (max 2000 characters)
 - [ ] Save the application in Supabase; block applying twice to the same job
 - [ ] Ask the user to upload a résumé first if they have none
-- [ ] Only job seeker accounts can apply, and only to active jobs
+- [ ] Only job seeker accounts can apply
+- [ ] Route `/jobs/:jobId/apply` (login required)
 
-### AT-A1 – Easy Apply with my résumé
+### AT-A1 – Apply with one of my résumés
 - **Given** I am logged in as a job seeker with at least one résumé
-- **When** I open a job on Find Jobs and click **Easy Apply**
-- **Then** the application is saved with status **Applied** and the résumé shown in the picker
+- **When** I open a job, choose a résumé and click **Submit application**
+- **Then** the application is saved with status **Applied** and the résumé I chose
 
 ### AT-A2 – Cannot apply twice to the same job
 - **Given** I already applied to a job
-- **When** I open that job on Find Jobs
-- **Then** I see "You applied to this job" with its status, and there is no Easy Apply button
+- **When** I open that job's apply page again
+- **Then** I see "You already applied" and no second application is created
 
 ### AT-A3 – Must have a résumé to apply
 - **Given** I have no uploaded résumé
-- **When** I open a job on Find Jobs
-- **Then** I see "Upload a résumé first to apply" with a link to My Résumés, and no Easy Apply button
+- **When** I open a job's apply page
+- **Then** I see "Upload a résumé first" with a link to My Résumés, and no submit button
 
 ### AT-A4 – Recruiters cannot apply
 - **Given** I am logged in with a recruiter account
-- **When** I open a job on Find Jobs
-- **Then** I see "Recruiter accounts can't apply to jobs" and no Easy Apply button
+- **When** I open a job's apply page
+- **Then** I see "Only job seeker accounts can apply to jobs" and no submit button
 
 ---
 
 ## User Story B – Track application status
-**As a** job seeker, **I want to** see the jobs I applied to and the current status of each (Applied, Under Review, Interview, Offered, Rejected) **so that** I know where each one stands.
+**As a** job seeker, **I want to** see each of my applications and its current status (Applied, Under Review, Interview, Offered, Rejected) **so that** I know where each one stands.
 
 **Tasks**
 - [ ] My Applications page with status badge and progress tracker
@@ -63,7 +60,7 @@ Labels: `user story` or `acceptance test`, plus `sprint 2` and `feature: applica
 ### AT-B1 – See my applications and their status
 - **Given** I applied to 2 jobs
 - **When** I open **My Applications**
-- **Then** I see only those 2 jobs, each with its company, status badge, progress tracker, apply date and résumé used
+- **Then** I see both, each with its status badge, progress tracker, apply date and résumé used
 
 ### AT-B2 – Status updates show up
 - **Given** a recruiter moved my application to **Interview** 3 days ago
@@ -83,23 +80,25 @@ Labels: `user story` or `acceptance test`, plus `sprint 2` and `feature: applica
 ---
 
 ## User Story C – Confirmation of successful submission
-**As a** job seeker, **I want to** get a clear confirmation right after I apply **so that** I know my application was received.
+**As a** job seeker, **I want to** get a clear confirmation after I apply **so that** I know my application was received.
 
 **Tasks**
-- [ ] After Easy Apply, show "Application sent!" with the résumé sent, date, reference number and status
-- [ ] Link to My Applications
+- [ ] Confirmation page `/applications/:id/confirmation`
+- [ ] Show job, reference number, date, résumé sent and status
+- [ ] Buttons to View my applications / Apply to another job
 
-### AT-C1 – Confirmation after applying
-- **Given** I click **Easy Apply** on a job
-- **When** the application is saved
-- **Then** the panel shows "Application sent!" with the résumé sent, today's date, a reference number and status Applied
+### AT-C1 – Confirmation after submitting
+- **Given** I submit an application
+- **When** it is saved
+- **Then** I land on a confirmation page showing the job title, a reference number, today's date, the résumé sent and status Applied
 
 ### AT-C2 – Failed submission shows an error, not a confirmation
 - **Given** the application cannot be saved (for example, the account is not allowed to apply)
-- **When** I click **Easy Apply**
-- **Then** an error message is shown, nothing is saved and no confirmation appears
+- **When** I click **Submit application**
+- **Then** I stay on the apply page with an error message and no confirmation is shown
 
 ---
 
-## Notes for feature 4 (recruiter dashboard)
-Recruiters can already read and update the `status` of applications to jobs where `jobs.recruiter_id` is their id (only the status column can change). To open an applicant's résumé file, a storage rule for recruiters will still be needed.
+## Notes for the other groups
+- **Group 1 (job listing):** link the job details page to `/jobs/<job id>/apply`. If you already created a `jobs` table, it needs the columns `title`, `company`, `location`, `category`, `job_type`, `description`, `posted_by`.
+- **Feature 4 (recruiter dashboard):** recruiters can already read and update the `status` of applications to jobs where `posted_by` is their id. To open an applicant's résumé file, a storage rule for recruiters will still be needed.
