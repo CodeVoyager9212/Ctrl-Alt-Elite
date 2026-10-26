@@ -1,3 +1,4 @@
+
 export type ProfileRow = {
   id: string;
   full_name: string;
@@ -96,6 +97,11 @@ export type JobInsert = Omit<
 
 export type JobUpdate = Partial<JobInsert>;
 
+// ============================================================
+// APPLICATIONS
+// Matches the existing public.applications table in Supabase.
+// ============================================================
+
 export type ApplicationStatus =
   | "Applied"
   | "Under Review"
@@ -105,27 +111,38 @@ export type ApplicationStatus =
 
 export type ApplicationRow = {
   id: string;
+  applicant_id: string;
   job_id: string;
-  user_id: string;
-  resume_id: string | null;
-  resume_file_name: string;
+  resume_id: string;
   status: ApplicationStatus;
   applied_at: string;
+  updated_at: string;
   status_changed_at: string;
 };
 
-type ApplicationInsert = {
+// Job seekers submit applications using their own user ID,
+// a job ID, and one of their uploaded resumes.
+// The database automatically generates the remaining values.
+export type ApplicationInsert = {
   id?: string;
+  applicant_id: string;
   job_id: string;
-  user_id: string;
   resume_id: string;
-  resume_file_name?: string;
   status?: "Applied";
+  applied_at?: string;
+  updated_at?: string;
+  status_changed_at?: string;
 };
 
-type ApplicationUpdate = {
+// Recruiters are only allowed to change application status.
+// Ownership restrictions are enforced through Supabase RLS.
+export type ApplicationUpdate = {
   status?: ApplicationStatus;
 };
+
+// ============================================================
+// SUPABASE DATABASE TYPES
+// ============================================================
 
 export type Database = {
   public: {
