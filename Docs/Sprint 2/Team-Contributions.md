@@ -20,9 +20,9 @@
 
 ## Arman
 - Worked with Philopater and Peter on the Job Search and Job Listing Interface.
-- Helped organize the Sprint 2 documentation and GitHub repository.
-- Worked on the Sprint 2 meeting minutes and sprint planning.
-- Helped review user stories, GitHub Issues, and project requirements.
+- Helped organize the Sprint 2 documentation, including meeting minutes and sprint planning.
+- Reviewed user stories, GitHub Issues, and project requirements.
+- Set up and tested the Continuous Integration (CI) pipeline using GitHub Actions.
 - Participated in team discussions and reviewed the completed work.
 
 ## Anas
