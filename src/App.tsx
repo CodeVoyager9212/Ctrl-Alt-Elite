@@ -12,6 +12,9 @@ import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import ProfilePage from "./pages/ProfilePage";
 import ResumePage from "./pages/ResumePage";
+import ApplicationsPage from "./pages/ApplicationsPage";
+import ApplyPage from "./pages/ApplyPage";
+import ApplicationConfirmationPage from "./pages/ApplicationConfirmationPage";
 import { supabase } from "./lib/supabase";
 import "./App.css";
 
@@ -107,6 +110,30 @@ function App() {
               {session && (
                 <ResumePage key={session.user.id} user={session.user} />
               )}
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/applications"
+          element={
+            <ProtectedRoute loading={authLoading} session={session}>
+              {session && <ApplicationsPage key={session.user.id} user={session.user} />}
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/jobs/:jobId/apply"
+          element={
+            <ProtectedRoute loading={authLoading} session={session}>
+              {session && <ApplyPage key={session.user.id} user={session.user} />}
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/applications/:applicationId/confirmation"
+          element={
+            <ProtectedRoute loading={authLoading} session={session}>
+              {session && <ApplicationConfirmationPage key={session.user.id} user={session.user} />}
             </ProtectedRoute>
           }
         />

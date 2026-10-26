@@ -226,7 +226,7 @@ function ProfilePage({ user }: ProfilePageProps) {
         <nav className="sidebar-navigation">
           <a href="#">▦ <span>Dashboard</span></a>
           <a href="#">⌕ <span>Find Jobs</span></a>
-          <a href="#">▤ <span>My Applications</span></a>
+          <Link to="/applications">▤ <span>My Applications</span></Link>
           <a href="#">♡ <span>Saved Jobs</span></a>
           <Link to="/resumes">▤ <span>My Résumés</span></Link>
 

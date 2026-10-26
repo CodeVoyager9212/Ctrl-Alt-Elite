@@ -57,6 +57,63 @@ type ResumeInsert = {
 
 type ResumeUpdate = Partial<ResumeInsert>;
 
+export type JobRow = {
+  id: string;
+  title: string;
+  company: string;
+  location: string;
+  category: string;
+  job_type: string;
+  description: string;
+  posted_by: string | null;
+  created_at: string;
+};
+
+type JobInsert = {
+  id?: string;
+  title: string;
+  company: string;
+  location?: string;
+  category?: string;
+  job_type?: string;
+  description?: string;
+  posted_by?: string | null;
+  created_at?: string;
+};
+
+export type ApplicationStatus =
+  | "Applied"
+  | "Under Review"
+  | "Interview"
+  | "Offered"
+  | "Rejected";
+
+export type ApplicationRow = {
+  id: string;
+  job_id: string;
+  user_id: string;
+  resume_id: string | null;
+  resume_file_name: string;
+  cover_letter: string;
+  status: ApplicationStatus;
+  applied_at: string;
+  status_changed_at: string;
+};
+
+type ApplicationInsert = {
+  id?: string;
+  job_id: string;
+  user_id: string;
+  resume_id?: string | null;
+  resume_file_name?: string;
+  cover_letter?: string;
+  status?: "Applied";
+};
+
+type ApplicationUpdate = {
+  status?: ApplicationStatus;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -70,6 +127,18 @@ export type Database = {
         Row: ResumeRow;
         Insert: ResumeInsert;
         Update: ResumeUpdate;
+        Relationships: [];
+      };
+      jobs: {
+        Row: JobRow;
+        Insert: JobInsert;
+        Update: Partial<JobInsert>;
+        Relationships: [];
+      };
+      applications: {
+        Row: ApplicationRow;
+        Insert: ApplicationInsert;
+        Update: ApplicationUpdate;
         Relationships: [];
       };
     };

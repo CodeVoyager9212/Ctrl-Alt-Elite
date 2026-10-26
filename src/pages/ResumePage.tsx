@@ -241,7 +241,7 @@ function ResumePage({ user }: ResumePageProps) {
         <nav className="sidebar-navigation">
           <a href="#">▦ <span>Dashboard</span></a>
           <a href="#">⌕ <span>Find Jobs</span></a>
-          <a href="#">▤ <span>My Applications</span></a>
+          <Link to="/applications">▤ <span>My Applications</span></Link>
           <a href="#">♡ <span>Saved Jobs</span></a>
           <Link className="sidebar-navigation__active" to="/resumes">
             ▤ <span>My Résumés</span>

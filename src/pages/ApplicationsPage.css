@@ -1,0 +1,361 @@
+/* Job application submission & tracking (Apply, Confirmation, My Applications) */
+
+.app-muted {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 14px;
+}
+
+.app-eyebrow {
+  margin: 0 0 6px;
+  color: var(--green);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.app-card {
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+
+.app-card h2,
+.app-item h2,
+.app-job h2 {
+  margin: 0;
+}
+
+/* Status badges (Applied / Interview already exist in App.css) */
+.status-badge--under-review {
+  background-color: #e5eef7;
+  color: #2c5a85;
+}
+
+.status-badge--offered {
+  background-color: var(--green);
+  color: white;
+}
+
+.status-badge--rejected {
+  background-color: #fce8e6;
+  color: #9c2f27;
+}
+
+/* Filters */
+.app-filters {
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.app-filter {
+  padding: 8px 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background-color: var(--white);
+  color: var(--text);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.app-filter:hover {
+  border-color: var(--green);
+}
+
+.app-filter--active {
+  border-color: var(--green);
+  background-color: var(--green);
+  color: white;
+}
+
+.app-filter__count {
+  min-width: 20px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background-color: rgba(0, 0, 0, 0.07);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+}
+
+.app-filter--active .app-filter__count {
+  background-color: rgba(255, 255, 255, 0.22);
+}
+
+/* Application list */
+.app-list {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+
+.app-item {
+  display: grid;
+  gap: 16px;
+}
+
+.app-item__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app-item__head p {
+  margin-top: 4px;
+}
+
+.app-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+/* Progress tracker */
+.tracker {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.tracker__step {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: var(--muted-text);
+  font-size: 12px;
+  text-align: center;
+}
+
+.tracker__step::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  right: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--border);
+}
+
+.tracker__step:first-child::before {
+  display: none;
+}
+
+.tracker__dot {
+  position: relative;
+  z-index: 1;
+  width: 14px;
+  height: 14px;
+  border: 2px solid var(--border);
+  border-radius: 50%;
+  background-color: var(--white);
+}
+
+.tracker__step--done,
+.tracker__step--current {
+  color: var(--text);
+}
+
+.tracker__step--done::before,
+.tracker__step--current::before {
+  background-color: var(--green);
+}
+
+.tracker__step--done .tracker__dot {
+  border-color: var(--green);
+  background-color: var(--green);
+}
+
+.tracker__step--current .tracker__dot {
+  border-color: var(--green);
+  box-shadow: 0 0 0 4px rgba(47, 111, 78, 0.18);
+}
+
+.tracker__step--current .tracker__label {
+  font-weight: 700;
+}
+
+.tracker--rejected .tracker__dot {
+  border-color: #e3b9b4;
+}
+
+/* Jobs not applied to yet */
+.open-jobs {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 8px;
+}
+
+.open-job {
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--cream);
+}
+
+.open-job > div:first-child {
+  display: grid;
+  gap: 2px;
+}
+
+/* Apply page */
+.apply-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 18px;
+  align-items: start;
+}
+
+.app-job__description {
+  margin: 14px 0 0;
+  line-height: 1.6;
+}
+
+.apply-form {
+  justify-items: stretch;
+}
+
+.apply-form .button {
+  justify-self: start;
+}
+
+.apply-resumes {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.apply-resumes legend {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.apply-resume {
+  padding: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background-color: var(--cream);
+  cursor: pointer;
+}
+
+.apply-resume:has(input:checked) {
+  border-color: var(--green);
+  background-color: var(--light-green);
+}
+
+.apply-resume > span {
+  display: grid;
+  gap: 2px;
+}
+
+.apply-resume strong {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.apply-resume small {
+  color: var(--muted-text);
+}
+
+/* Confirmation */
+.confirm-card {
+  max-width: 640px;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.confirm-title {
+  margin: 0;
+  font-family: Georgia, serif;
+  font-size: 30px;
+  line-height: 1.2;
+  text-wrap: balance;
+}
+
+.confirm-details {
+  width: 100%;
+  margin: 8px 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.confirm-details div {
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background-color: var(--cream);
+}
+
+.confirm-details dt {
+  color: var(--muted-text);
+  font-size: 12px;
+}
+
+.confirm-details dd {
+  margin: 4px 0 0;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.confirm-ref {
+  font-family: ui-monospace, Menlo, monospace;
+  letter-spacing: 0.06em;
+}
+
+.confirm-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+@media (max-width: 860px) {
+  .apply-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .confirm-details {
+    grid-template-columns: 1fr;
+  }
+
+  .tracker__label {
+    font-size: 10px;
+  }
+
+  .open-job {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
