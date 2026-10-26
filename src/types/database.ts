@@ -57,6 +57,45 @@ type ResumeInsert = {
 
 type ResumeUpdate = Partial<ResumeInsert>;
 
+export type JobRow = {
+  id: string;
+  title: string;
+  company_name: string;
+  location: string;
+  work_mode: "Remote" | "Hybrid" | "On-site";
+  category: string;
+  employment_type:
+    | "Full-time"
+    | "Part-time"
+    | "Contract"
+    | "Internship"
+    | "Temporary";
+  salary_min: number | null;
+  salary_max: number | null;
+  salary_currency: string | null;
+  salary_period: "Hourly" | "Monthly" | "Yearly" | null;
+  summary: string;
+  description: string;
+  requirements: string | null;
+  responsibilities: string | null;
+  recruiter_id: string | null;
+  posted_at: string;
+  is_active: boolean;
+  created_at: string;
+};
+
+export type JobInsert = Omit<
+  JobRow,
+  "id" | "created_at" | "posted_at" | "is_active"
+> & {
+  id?: string;
+  created_at?: string;
+  posted_at?: string;
+  is_active?: boolean;
+};
+
+export type JobUpdate = Partial<JobInsert>;
+
 export type Database = {
   public: {
     Tables: {
@@ -70,6 +109,12 @@ export type Database = {
         Row: ResumeRow;
         Insert: ResumeInsert;
         Update: ResumeUpdate;
+        Relationships: [];
+      };
+      jobs: {
+        Row: JobRow;
+        Insert: JobInsert;
+        Update: JobUpdate;
         Relationships: [];
       };
     };

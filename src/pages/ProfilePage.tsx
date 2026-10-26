@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
-import { Link, useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+import type { ApplicationOutletContext } from "../components/layout/ApplicationLayout";
 import { supabase } from "../lib/supabase";
 import "./ProfilePage.css";
 
@@ -16,10 +17,6 @@ type ProfileForm = {
   jobType: JobType | "";
   location: string;
   accountType: AccountType;
-};
-
-type ProfilePageProps = {
-  user: User;
 };
 
 const PROFILE_COLUMNS =
@@ -49,7 +46,9 @@ function getInitialProfile(user: User): ProfileForm {
   };
 }
 
-function ProfilePage({ user }: ProfilePageProps) {
+function ProfilePage() {
+  const { user, updateAccountSummary } =
+    useOutletContext<ApplicationOutletContext>();
   const [profile, setProfile] = useState<ProfileForm>(() =>
     getInitialProfile(user),
   );
@@ -57,9 +56,6 @@ function ProfilePage({ user }: ProfilePageProps) {
   const [profileError, setProfileError] = useState("");
   const [saveSuccess, setSaveSuccess] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [signOutError, setSignOutError] = useState("");
-  const [signingOut, setSigningOut] = useState(false);
-  const navigate = useNavigate();
   const email = user.email ?? "";
   const accountTypeLabel =
     profile.accountType === "recruiter" ? "Recruiter" : "Job seeker";
@@ -80,7 +76,7 @@ function ProfilePage({ user }: ProfilePageProps) {
         if (error) {
           setProfileError(`Unable to load your profile. ${error.message}`);
         } else if (data) {
-          setProfile({
+          const loadedProfile: ProfileForm = {
             fullName: data.full_name,
             headline: data.headline,
             education: data.education,
@@ -89,7 +85,9 @@ function ProfilePage({ user }: ProfilePageProps) {
             jobType: data.preferred_job_type,
             location: data.preferred_location,
             accountType: data.account_type,
-          });
+          };
+          setProfile(loadedProfile);
+          updateAccountSummary(loadedProfile);
         }
       } catch {
         if (active) {
@@ -107,7 +105,7 @@ function ProfilePage({ user }: ProfilePageProps) {
     return () => {
       active = false;
     };
-  }, [user.id]);
+  }, [updateAccountSummary, user.id]);
 
   function updateProfileField<Key extends keyof ProfileForm>(
     field: Key,
@@ -174,6 +172,7 @@ function ProfilePage({ user }: ProfilePageProps) {
       }
 
       setProfile(normalizedProfile);
+      updateAccountSummary(normalizedProfile);
       setSaveSuccess(true);
     } catch {
       setProfileError(
@@ -184,86 +183,7 @@ function ProfilePage({ user }: ProfilePageProps) {
     }
   }
 
-  async function handleSignOut() {
-    if (signingOut) return;
-
-    setSignOutError("");
-    setSigningOut(true);
-
-    try {
-      const { error } = await supabase.auth.signOut();
-
-      if (error) {
-        setSignOutError(error.message);
-        return;
-      }
-
-      navigate("/login", { replace: true });
-    } catch {
-      setSignOutError(
-        "Unable to reach the authentication service. Please try again.",
-      );
-    } finally {
-      setSigningOut(false);
-    }
-  }
-
   return (
-    <div className="dashboard-layout">
-      <aside className="dashboard-sidebar">
-        <Link className="navbar__brand sidebar-brand" to="/">
-          <span className="navbar__logo">CC</span>
-          <span>CareerConnect</span>
-        </Link>
-
-        <input
-          className="sidebar-search"
-          type="search"
-          placeholder="⌕  Search jobs"
-          aria-label="Search jobs"
-        />
-
-        <nav className="sidebar-navigation">
-          <a href="#">▦ <span>Dashboard</span></a>
-          <a href="#">⌕ <span>Find Jobs</span></a>
-          <a href="#">▤ <span>My Applications</span></a>
-          <a href="#">♡ <span>Saved Jobs</span></a>
-          <Link to="/resumes">▤ <span>My Résumés</span></Link>
-
-          <Link className="sidebar-navigation__active" to="/profile">
-            ◉ <span>Profile</span>
-          </Link>
-
-          <a href="#">◷ <span>Notifications</span></a>
-        </nav>
-
-        <div className="sidebar-user">
-          <span className="profile-initials profile-initials--small">
-            {initials || "CC"}
-          </span>
-
-          <div>
-            <strong>{email}</strong>
-            <span>{accountTypeLabel}</span>
-          </div>
-        </div>
-
-        {signOutError && (
-          <p className="auth-message auth-message--error" role="alert">
-            {signOutError}
-          </p>
-        )}
-
-        <button
-          className="sidebar-signout"
-          type="button"
-          onClick={handleSignOut}
-          disabled={signingOut}
-        >
-          {signingOut ? "Signing out..." : "Sign out"}
-        </button>
-      </aside>
-
       <main className="profile-main">
         <header className="profile-heading">
           <p>Your details</p>
@@ -431,7 +351,6 @@ function ProfilePage({ user }: ProfilePageProps) {
           </div>
         </form>
       </main>
-    </div>
   );
 }
 

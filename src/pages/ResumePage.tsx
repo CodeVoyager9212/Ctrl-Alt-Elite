@@ -1,14 +1,10 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import type { User } from "@supabase/supabase-js";
-import { Link, useNavigate } from "react-router-dom";
+import { useOutletContext } from "react-router-dom";
+import type { ApplicationOutletContext } from "../components/layout/ApplicationLayout";
 import { supabase } from "../lib/supabase";
 import type { ResumeRow } from "../types/database";
 import "./ProfilePage.css";
 import "./ResumePage.css";
-
-type ResumePageProps = {
-  user: User;
-};
 
 const BUCKET = "resumes";
 const MAX_SIZE_MB = 5;
@@ -41,7 +37,8 @@ function labelFromFileName(fileName: string) {
   return fileName.replace(/\.(pdf|docx?)$/i, "");
 }
 
-function ResumePage({ user }: ResumePageProps) {
+function ResumePage() {
+  const { user } = useOutletContext<ApplicationOutletContext>();
   const [resumes, setResumes] = useState<ResumeRow[]>([]);
   const [loading, setLoading] = useState(true);
   const [busy, setBusy] = useState(false);
@@ -51,7 +48,6 @@ function ResumePage({ user }: ResumePageProps) {
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editLabel, setEditLabel] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
-  const navigate = useNavigate();
 
   // Load this user's résumés from the database (primary first, then oldest first).
   const fetchResumes = useCallback(
@@ -225,42 +221,7 @@ function ResumePage({ user }: ResumePageProps) {
     showMessage(`"${resume.file_name}" deleted.`);
   }
 
-  async function handleSignOut() {
-    await supabase.auth.signOut();
-    navigate("/login", { replace: true });
-  }
-
   return (
-    <div className="dashboard-layout">
-      <aside className="dashboard-sidebar">
-        <Link className="navbar__brand sidebar-brand" to="/">
-          <span className="navbar__logo">CC</span>
-          <span>CareerConnect</span>
-        </Link>
-
-        <nav className="sidebar-navigation">
-          <a href="#">▦ <span>Dashboard</span></a>
-          <a href="#">⌕ <span>Find Jobs</span></a>
-          <a href="#">▤ <span>My Applications</span></a>
-          <a href="#">♡ <span>Saved Jobs</span></a>
-          <Link className="sidebar-navigation__active" to="/resumes">
-            ▤ <span>My Résumés</span>
-          </Link>
-          <Link to="/profile">◉ <span>Profile</span></Link>
-          <a href="#">◷ <span>Notifications</span></a>
-        </nav>
-
-        <div className="sidebar-user">
-          <div>
-            <strong>{user.email}</strong>
-          </div>
-        </div>
-
-        <button className="sidebar-signout" type="button" onClick={handleSignOut}>
-          Sign out
-        </button>
-      </aside>
-
       <main className="profile-main">
         <header className="profile-heading">
           <p>Manage your files</p>
@@ -386,7 +347,6 @@ function ResumePage({ user }: ResumePageProps) {
           )}
         </section>
       </main>
-    </div>
   );
 }
 
