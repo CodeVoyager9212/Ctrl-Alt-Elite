@@ -425,6 +425,10 @@
   background: #e0eae0;
 }
 
+.job-details__apply {
+  padding: 0 30px 24px;
+}
+
 .job-details__badges {
   display: flex;
   flex-wrap: wrap;
@@ -589,6 +593,10 @@
   }
 
   .job-details__badges {
+    padding: 0 22px 20px;
+  }
+
+  .job-details__apply {
     padding: 0 22px 20px;
   }
 

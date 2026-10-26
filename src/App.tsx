@@ -15,6 +15,7 @@ import SignupPage from "./pages/SignupPage";
 import ProfilePage from "./pages/ProfilePage";
 import ResumePage from "./pages/ResumePage";
 import FindJobsPage from "./pages/FindJobsPage";
+import ApplicationsPage from "./pages/ApplicationsPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import ApplicationLayout from "./components/layout/ApplicationLayout";
 
@@ -148,16 +149,7 @@ function App() {
             }
           />
           <Route path="/find-jobs" element={<FindJobsPage />} />
-          <Route
-            path="/applications"
-            element={
-              <PlaceholderPage
-                eyebrow="Track your progress"
-                title="My Applications"
-                description="Application tracking is not implemented yet."
-              />
-            }
-          />
+          <Route path="/applications" element={<ApplicationsPage />} />
           <Route
             path="/saved-jobs"
             element={

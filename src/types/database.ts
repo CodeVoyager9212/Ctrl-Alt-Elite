@@ -96,6 +96,37 @@ export type JobInsert = Omit<
 
 export type JobUpdate = Partial<JobInsert>;
 
+export type ApplicationStatus =
+  | "Applied"
+  | "Under Review"
+  | "Interview"
+  | "Offered"
+  | "Rejected";
+
+export type ApplicationRow = {
+  id: string;
+  job_id: string;
+  user_id: string;
+  resume_id: string | null;
+  resume_file_name: string;
+  status: ApplicationStatus;
+  applied_at: string;
+  status_changed_at: string;
+};
+
+type ApplicationInsert = {
+  id?: string;
+  job_id: string;
+  user_id: string;
+  resume_id: string;
+  resume_file_name?: string;
+  status?: "Applied";
+};
+
+type ApplicationUpdate = {
+  status?: ApplicationStatus;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -115,6 +146,12 @@ export type Database = {
         Row: JobRow;
         Insert: JobInsert;
         Update: JobUpdate;
+        Relationships: [];
+      };
+      applications: {
+        Row: ApplicationRow;
+        Insert: ApplicationInsert;
+        Update: ApplicationUpdate;
         Relationships: [];
       };
     };

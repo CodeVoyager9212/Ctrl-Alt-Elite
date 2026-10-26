@@ -290,6 +290,21 @@ a.button {
   color: #a16a20;
 }
 
+.status-badge--under-review {
+  background-color: #e5eef7;
+  color: #2c5a85;
+}
+
+.status-badge--offered {
+  background-color: var(--green);
+  color: white;
+}
+
+.status-badge--rejected {
+  background-color: #fce8e6;
+  color: #9c2f27;
+}
+
 /* Authentication pages */
 
 .auth-page {

@@ -1,5 +1,6 @@
 
 import type { JobRow } from "../../types/database";
+import EasyApply from "./EasyApply";
 
 type JobDetailsPanelProps = {
   job: JobRow | null;
@@ -136,6 +137,8 @@ export default function JobDetailsPanel({
           {job.category}
         </span>
       </div>
+
+      <EasyApply key={job.id} job={job} />
 
       <div className="job-details__information">
         <div>
