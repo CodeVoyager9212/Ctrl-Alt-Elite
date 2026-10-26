@@ -79,5 +79,61 @@
 - Perform a final review of the project before submission.
 - Submit the completed Sprint 1 work before the deadline.
 --------------------------------------------------------------------------------------------------------------------------------------------
+## Meeting 6 – October 15, 2026
+**Duration:** 1 hour
 
+**Members Present:** Philopater, Peter, Alfred, Arman, Anas
+### Discussion
+- Reviewed the Sprint 2 requirements and discussed the main features that needed to be implemented.
+- Discussed how to divide the work between team members.
+- Agreed to create two groups of three members. The first group would work on the Job Search and Job Listing Interface, while the second group would work on Job Application Submission and Tracking.
+- Discussed the general goals for each feature and what needed to be prepared before starting development.
+### Decisions/Action Items
+- Divide the team into two groups based on the assigned features.
+- Each group will review its feature requirements and prepare an initial plan or draft.
+- Share the initial ideas at the next team meeting before starting the main development work.
+--------------------------------------------------------------------------------------------------------------------------------------------
+## Meeting 7 – October 16, 2026
+**Duration:** 1 hour
 
+**Members Present:** Philopater, Peter
+### Discussion
+- Reviewed the requirements for their assigned Sprint 2 tasks.
+- Discussed how to break the work into smaller and more manageable tasks.
+- Identified the main objectives and considered how the feature should be structured.
+- Discussed possible ways to begin the implementation and organize the development work.
+### Decisions/Action Items
+- Prepare a checklist of tasks needed to complete their assigned work.
+- Think of possible design and implementation ideas.
+- Share the proposed task breakdown and ideas with the rest of the team at the next meeting.
+--------------------------------------------------------------------------------------------------------------------------------------------
+## Meeting 8 – October 20, 2026
+**Duration:** 4 hours
+
+**Members Present:** Philopater, Peter, Alfred, Arman
+### Discussion
+- Reviewed the ideas and initial plans prepared by the team members.
+- Discussed how to begin implementing the assigned features and connect them to the existing CareerConnect project.
+- Team members started working on their assigned tasks and shared their progress during the meeting.
+- Discussed questions and possible challenges related to the implementation.
+- Reviewed the remaining tasks and what needed to be completed before the final meeting.
+### Decisions/Action Items
+- Continue developing the assigned features based on the agreed plans.
+- Communicate with other members when help or changes are needed.
+- Update the team on progress and prepare the completed work for review at the next meeting.
+--------------------------------------------------------------------------------------------------------------------------------------------
+## Meeting 9 – October 25, 2026
+**Duration:** 3 hours
+
+**Members Present:** Philopater, Peter, Alfred, Arman
+### Discussion
+- Reviewed the work completed by each team member during Sprint 2.
+- Checked the implemented features to make sure they worked correctly and followed the project requirements.
+- Discussed any remaining issues, missing details, or improvements needed before submission.
+- Reviewed the GitHub repository, including the project documentation, issues, and team contributions.
+- Discussed the final steps needed to prepare the project for the Sprint 2 evaluation.
+### Decisions/Action Items
+- Fix any remaining problems found during the final review.
+- Make sure all completed work is uploaded to the GitHub repository.
+- Finalize the required Sprint 2 documentation and contribution logs.
+- Review the project one last time before submission and prepare to demonstrate the completed features.
