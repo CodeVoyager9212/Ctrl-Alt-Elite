@@ -216,13 +216,10 @@ function App() {
     const userId = session?.user.id;
 
     if (!userId) {
-      setProfileState(null);
       return;
     }
 
     let active = true;
-
-    setProfileState(null);
 
     async function loadProfile() {
       const { data, error } = await supabase

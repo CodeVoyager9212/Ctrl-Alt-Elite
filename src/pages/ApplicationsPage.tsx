@@ -101,8 +101,6 @@ function ApplicationsPage() {
         ...new Set(userApplications.map((app) => app.resume_id)),
       ];
 
-      let jobRows: JobRow[] = [];
-      let resumeRows: ResumeRow[] = [];
 
       // 3. Load associated jobs and resumes.
       const [jobResult, resumeResult] = await Promise.all([
@@ -144,12 +142,9 @@ function ApplicationsPage() {
         );
       }
 
-      jobRows = jobResult.data ?? [];
-      resumeRows = resumeResult.data ?? [];
-
       setApplications(userApplications);
-      setJobs(jobRows);
-      setResumes(resumeRows);
+      setJobs(jobResult.data ?? []);
+      setResumes(resumeResult.data ?? []);
       setLoading(false);
     }
 
