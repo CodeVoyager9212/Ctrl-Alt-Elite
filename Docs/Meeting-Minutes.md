@@ -79,7 +79,7 @@
 - Perform a final review of the project before submission.
 - Submit the completed Sprint 1 work before the deadline.
 --------------------------------------------------------------------------------------------------------------------------------------------
-## Meeting 6 – October 15, 2026
+# Meeting 6 – October 15, 2026
 **Duration:** 1 hour
 
 **Members Present:** Philopater, Peter, Alfred, Arman, Anas
@@ -93,7 +93,7 @@
 - Each group will review its feature requirements and prepare an initial plan or draft.
 - Share the initial ideas at the next team meeting before starting the main development work.
 --------------------------------------------------------------------------------------------------------------------------------------------
-## Meeting 7 – October 16, 2026
+# Meeting 7 – October 16, 2026
 **Duration:** 1 hour
 
 **Members Present:** Philopater, Peter
@@ -107,7 +107,7 @@
 - Think of possible design and implementation ideas.
 - Share the proposed task breakdown and ideas with the rest of the team at the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-## Meeting 8 – October 20, 2026
+# Meeting 8 – October 20, 2026
 **Duration:** 4 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman
@@ -122,8 +122,8 @@
 - Communicate with other members when help or changes are needed.
 - Update the team on progress and prepare the completed work for review at the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-## Meeting 9 – October 25, 2026
-**Duration:** 4 hours
+# Meeting 9 – October 25, 2026
+**Duration:** 5 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman, Omar
 ### Discussion
