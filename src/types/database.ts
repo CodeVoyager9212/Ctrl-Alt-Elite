@@ -14,6 +14,12 @@ export type ProfileRow = {
     | "Contract"
     | "Part-time";
   preferred_location: string;
+  recruiter_position: string | null;
+  contact_phone: string | null;
+  company_name: string | null;
+  company_location: string | null;
+  company_website: string | null;
+  company_description: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -28,6 +34,12 @@ type ProfileInsert = {
   skills?: string;
   preferred_job_type?: ProfileRow["preferred_job_type"];
   preferred_location?: string;
+  recruiter_position?: string | null;
+  contact_phone?: string | null;
+  company_name?: string | null;
+  company_location?: string | null;
+  company_website?: string | null;
+  company_description?: string | null;
   created_at?: string;
   updated_at?: string;
 };

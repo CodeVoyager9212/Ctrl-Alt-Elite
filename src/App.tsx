@@ -21,6 +21,7 @@ import RecruiterJobsPage from "./pages/recruiter/RecruiterJobsPage";
 import CreateJobPage from "./pages/recruiter/CreateJobPage";
 import JobApplicantsPage from "./pages/recruiter/JobApplicantsPage";
 import EditJobPage from "./pages/recruiter/EditJobPage";
+import RecruiterProfilePage from "./pages/recruiter/RecruiterProfilePage";
 
 import ApplicationLayout from "./components/layout/ApplicationLayout";
 import RecruiterLayout from "./components/layout/RecruiterLayout";
@@ -422,13 +423,7 @@ function App() {
 
           <Route
             path="/recruiter/profile"
-            element={
-              <PlaceholderPage
-                eyebrow="Your recruiter account"
-                title="Recruiter Profile"
-                description="Manage your recruiter name, company information, and contact details."
-              />
-            }
+            element={<RecruiterProfilePage />}
           />
         </Route>
       </Routes>

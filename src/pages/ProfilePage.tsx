@@ -151,9 +151,11 @@ function ProfilePage() {
     setSaving(true);
 
     try {
-      const { error } = await supabase.from("profiles").upsert(
-        {
-          id: user.id,
+      // Existing profiles are created during registration.
+      // UPDATE only editable columns; never send id or account_type.
+      const { data: saved, error } = await supabase
+        .from("profiles")
+        .update({
           full_name: normalizedProfile.fullName,
           headline: normalizedProfile.headline,
           education: normalizedProfile.education,
@@ -161,13 +163,19 @@ function ProfilePage() {
           skills: normalizedProfile.skills,
           preferred_job_type: normalizedProfile.jobType,
           preferred_location: normalizedProfile.location,
-          account_type: normalizedProfile.accountType,
-        },
-        { onConflict: "id" },
-      );
+          updated_at: new Date().toISOString(),
+        })
+        .eq("id", user.id)
+        .select("id")
+        .maybeSingle();
 
       if (error) {
         setProfileError(`Unable to save your profile. ${error.message}`);
+        return;
+      }
+
+      if (!saved) {
+        setProfileError("Your profile record was not found. Please contact support.");
         return;
       }
 
