@@ -137,3 +137,19 @@
 - Make sure all completed work is uploaded to the GitHub repository.
 - Finalize the required Sprint 2 documentation and contribution logs.
 - Review the project one last time before submission and prepare to demonstrate the completed features.
+--------------------------------------------------------------------------------------------------------------------------------------------
+# Meeting 10 – November 3, 2026
+**Duration:** 2 hour
+
+**Members Present:** Philopater, Peter, Alfred, Arman
+### Discussion
+- Reviewed the Sprint 3 guidelines and discussed the main features and requirements for this sprint.
+- Discussed how to divide the work among team members based on the features.
+- Agreed that Philopater would work on the Recruiter Dashboard and Posting Management feature.
+- Arman, Peter, and Alfred would work on the Application Analytics and History Dashboard, while Anas and Omar would handle Notifications and Reminders.
+- Briefly discussed the AI feature and agreed to plan it in more detail after making progress on the other features.
+### Decisions/Action Items
+- Each group will begin working on its assigned feature.
+- Team members will review the requirements and plan how to implement their features.
+- Continue updating GitHub Issues and tracking progress throughout the sprint.
+- Discuss and plan the AI feature in more detail at a future meeting.
