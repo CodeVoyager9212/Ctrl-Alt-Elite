@@ -153,3 +153,19 @@
 - Team members will review the requirements and plan how to implement their features.
 - Continue updating GitHub Issues and tracking progress throughout the sprint.
 - Discuss and plan the AI feature in more detail at a future meeting.
+--------------------------------------------------------------------------------------------------------------------------------------------
+# Meeting 11 – November 7, 2026
+**Duration:** 2 hours
+
+**Members Present:** Peter, Alfred, Arman
+### Discussion
+- Discussed the Application Analytics and History Dashboard feature for Sprint 3.
+- Reviewed the main requirements and discussed how the feature should work.
+- Started working on the initial dashboard layout and design.
+- Shared ideas about what information and features should be included in the dashboard.
+- Agreed to review the feature individually and explore additional ideas before the next meeting.
+### Decisions/Action Items
+- Each member will continue reviewing the feature and exploring possible improvements.
+- Think of additional features and layout ideas to discuss at the next meeting.
+- Share suggestions and decide on the final dashboard design as a group.
+- Continue working on the feature during the next meeting.
