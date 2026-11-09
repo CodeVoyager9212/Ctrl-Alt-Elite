@@ -95,16 +95,19 @@ export type JobRow = {
   posted_at: string;
   is_active: boolean;
   created_at: string;
+  // Optional date (YYYY-MM-DD) used for deadline reminders.
+  application_deadline: string | null;
 };
 
 export type JobInsert = Omit<
   JobRow,
-  "id" | "created_at" | "posted_at" | "is_active"
+  "id" | "created_at" | "posted_at" | "is_active" | "application_deadline"
 > & {
   id?: string;
   created_at?: string;
   posted_at?: string;
   is_active?: boolean;
+  application_deadline?: string | null;
 };
 
 export type JobUpdate = Partial<JobInsert>;
@@ -130,6 +133,7 @@ export type ApplicationRow = {
   applied_at: string;
   updated_at: string;
   status_changed_at: string;
+  interview_at: string | null;
 };
 
 // Job seekers submit applications using their own user ID,
@@ -146,10 +150,65 @@ export type ApplicationInsert = {
   status_changed_at?: string;
 };
 
-// Recruiters are only allowed to change application status.
+// Recruiters are only allowed to change application status
+// and the interview time.
 // Ownership restrictions are enforced through Supabase RLS.
 export type ApplicationUpdate = {
   status?: ApplicationStatus;
+  interview_at?: string | null;
+};
+
+// ============================================================
+// APPLICATION DRAFTS (saved incomplete applications)
+// ============================================================
+
+export type ApplicationDraftRow = {
+  id: string;
+  user_id: string;
+  job_id: string;
+  resume_id: string | null;
+  saved_at: string;
+};
+
+export type ApplicationDraftInsert = {
+  id?: string;
+  user_id: string;
+  job_id: string;
+  resume_id: string;
+  saved_at?: string;
+};
+
+// ============================================================
+// NOTIFICATIONS
+// Created by database triggers. Users can only mark them as read.
+// ============================================================
+
+export type NotificationType =
+  // Job seekers
+  | "status_update"
+  | "interview_reminder"
+  | "deadline_reminder"
+  | "incomplete_application"
+  | "job_recommendation"
+  | "new_job"
+  // Recruiters
+  | "new_application";
+
+export type NotificationRow = {
+  id: string;
+  user_id: string;
+  type: NotificationType;
+  title: string;
+  message: string;
+  job_id: string | null;
+  application_id: string | null;
+  is_read: boolean;
+  reminder_key: string | null;
+  created_at: string;
+};
+
+export type NotificationUpdate = {
+  is_read?: boolean;
 };
 
 // ============================================================
@@ -183,8 +242,25 @@ export type Database = {
         Update: ApplicationUpdate;
         Relationships: [];
       };
+      application_drafts: {
+        Row: ApplicationDraftRow;
+        Insert: ApplicationDraftInsert;
+        Update: Record<string, never>;
+        Relationships: [];
+      };
+      notifications: {
+        Row: NotificationRow;
+        Insert: Record<string, never>;
+        Update: NotificationUpdate;
+        Relationships: [];
+      };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      create_due_reminders: {
+        Args: Record<PropertyKey, never>;
+        Returns: undefined;
+      };
+    };
   };
 };

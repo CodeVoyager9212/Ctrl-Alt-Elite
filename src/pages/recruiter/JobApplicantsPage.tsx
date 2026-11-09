@@ -11,7 +11,9 @@ import { supabase } from "../../lib/supabase";
 import {
   ALL_STATUSES,
   formatDate,
+  formatDateTime,
   statusSlug,
+  toDateTimeLocalValue,
 } from "../../lib/applications";
 
 import type {
@@ -227,6 +229,47 @@ export default function JobApplicantsPage() {
       if (updateError) {
         setError(
           `Unable to update application. ${updateError.message}`
+        );
+        return;
+      }
+
+      setApplicants((previous) =>
+        previous.map((record) =>
+          record.application.id === applicationId
+            ? { ...record, application: data }
+            : record
+        )
+      );
+    } catch {
+      setError("Unable to connect to Supabase.");
+    } finally {
+      setSavingId(null);
+    }
+  }
+
+  // Save the interview date and time (status must be Interview).
+  // The database notifies the applicant.
+  async function updateInterviewTime(
+    applicationId: string,
+    interviewAt: string
+  ) {
+    if (savingId !== null) return;
+
+    setSavingId(applicationId);
+    setError("");
+
+    try {
+      const { data, error: updateError } = await supabase
+        .from("applications")
+        .update({ interview_at: interviewAt })
+        .eq("id", applicationId)
+        .eq("job_id", jobId!)
+        .select("*")
+        .single();
+
+      if (updateError) {
+        setError(
+          `Unable to save interview time. ${updateError.message}`
         );
         return;
       }
@@ -521,6 +564,20 @@ async function handleViewResume(resume: ResumeRow | null) {
                             )}`}
                       </p>
                     </section>
+
+                    {selected.application.status === "Interview" && (
+                      <InterviewTimeField
+                        key={selected.application.id}
+                        interviewAt={selected.application.interview_at}
+                        saving={savingId !== null}
+                        onSave={(value) =>
+                          void updateInterviewTime(
+                            selected.application.id,
+                            value
+                          )
+                        }
+                      />
+                    )}
                   </div>
                 </div>
               )}
@@ -529,6 +586,80 @@ async function handleViewResume(resume: ResumeRow | null) {
         )}
       </div>
     </main>
+  );
+}
+
+// Recruiter picks the interview date and time. The applicant gets an
+// "Interview scheduled" notification and a reminder 24 hours before.
+function InterviewTimeField({
+  interviewAt,
+  saving,
+  onSave,
+}: {
+  interviewAt: string | null;
+  saving: boolean;
+  onSave: (interviewAt: string) => void;
+}) {
+  const savedValue = interviewAt
+    ? toDateTimeLocalValue(new Date(interviewAt))
+    : "";
+
+  const [value, setValue] = useState(savedValue);
+  const [message, setMessage] = useState("");
+
+  function handleSave() {
+    const date = new Date(value);
+
+    if (!value || Number.isNaN(date.getTime())) {
+      setMessage("Choose a date and time.");
+      return;
+    }
+
+    if (date <= new Date()) {
+      setMessage("The interview must be in the future.");
+      return;
+    }
+
+    setMessage("");
+    onSave(date.toISOString());
+  }
+
+  return (
+    <section className="recruiter-applicants__section">
+      <h3>Interview date and time</h3>
+
+      <input
+        type="datetime-local"
+        aria-label="Interview date and time"
+        value={value}
+        min={toDateTimeLocalValue(new Date())}
+        disabled={saving}
+        onChange={(event) => {
+          setValue(event.target.value);
+          setMessage("");
+        }}
+      />
+
+      <button
+        type="button"
+        className="button button--primary"
+        style={{ marginTop: "14px" }}
+        disabled={saving || !value || value === savedValue}
+        onClick={handleSave}
+      >
+        Save interview time
+      </button>
+
+      <p
+        className="recruiter-applicants__note"
+        role={message ? "alert" : undefined}
+      >
+        {message ||
+          (interviewAt
+            ? `Scheduled for ${formatDateTime(interviewAt)}.`
+            : "The applicant will be notified and reminded 24 hours before.")}
+      </p>
+    </section>
   );
 }
 

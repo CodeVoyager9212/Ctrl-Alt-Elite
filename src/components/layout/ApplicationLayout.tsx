@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { User } from "@supabase/supabase-js";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import NotificationBell from "../notifications/NotificationBell";
 import "./ApplicationLayout.css";
 
 type AccountType = "job-seeker" | "recruiter";
@@ -27,7 +28,6 @@ const NAVIGATION_ITEMS = [
   { label: "Saved Jobs", path: "/saved-jobs", icon: "♡" },
   { label: "My Résumés", path: "/resumes", icon: "▤" },
   { label: "Profile", path: "/profile", icon: "◉" },
-  { label: "Notifications", path: "/notifications", icon: "◷" },
 ] as const;
 
 function getInitialAccountSummary(user: User): AccountSummary {
@@ -106,10 +106,14 @@ export default function ApplicationLayout({ user }: ApplicationLayoutProps) {
   return (
     <div className="application-layout">
       <aside className="application-sidebar">
-        <Link className="navbar__brand sidebar-brand" to="/dashboard">
-          <span className="navbar__logo">CC</span>
-          <span>CareerConnect</span>
-        </Link>
+        <div className="sidebar-top">
+          <Link className="navbar__brand sidebar-brand" to="/dashboard">
+            <span className="navbar__logo">CC</span>
+            <span>CareerConnect</span>
+          </Link>
+
+          <NotificationBell userId={user.id} />
+        </div>
 
         <nav className="sidebar-navigation" aria-label="Application navigation">
           {NAVIGATION_ITEMS.map((item) => (

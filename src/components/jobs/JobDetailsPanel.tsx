@@ -154,6 +154,17 @@ export default function JobDetailsPanel({
           </span>
           <strong>{formatDate(job.posted_at)}</strong>
         </div>
+
+        {job.application_deadline && (
+          <div>
+            <span className="job-details__label">
+              Apply by
+            </span>
+            <strong>
+              {formatDate(`${job.application_deadline}T00:00:00`)}
+            </strong>
+          </div>
+        )}
       </div>
 
       <div className="job-details__body">

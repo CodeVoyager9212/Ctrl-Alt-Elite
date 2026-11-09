@@ -34,3 +34,20 @@ export function formatDate(isoDate: string) {
     day: "numeric",
   });
 }
+
+// Date and time in the user's time zone, e.g. "Nov 12, 2026, 2:30 PM"
+export function formatDateTime(isoDate: string) {
+  return new Date(isoDate).toLocaleString(undefined, {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    hour: "numeric",
+    minute: "2-digit",
+  });
+}
+
+// Value for <input type="datetime-local"> in local time, e.g. "2026-11-12T14:30"
+export function toDateTimeLocalValue(date: Date) {
+  const local = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+  return local.toISOString().slice(0, 16);
+}

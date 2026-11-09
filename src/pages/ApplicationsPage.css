@@ -173,3 +173,14 @@
   }
 }
 
+
+/* Application opened from a notification */
+.app-item--highlight {
+  border-color: var(--green);
+  box-shadow: 0 0 0 3px rgba(47, 111, 78, 0.15);
+}
+
+.app-item__interview {
+  color: var(--green);
+  font-weight: 600;
+}

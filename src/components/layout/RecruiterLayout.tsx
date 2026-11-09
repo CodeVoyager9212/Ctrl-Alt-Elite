@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import NotificationBell from "../notifications/NotificationBell";
 import "./ApplicationLayout.css";
 
 type RecruiterLayoutProps = {
@@ -97,13 +98,17 @@ export default function RecruiterLayout({
   return (
     <div className="application-layout">
       <aside className="application-sidebar">
-        <Link
-          className="navbar__brand sidebar-brand"
-          to="/recruiter/jobs"
-        >
-          <span className="navbar__logo">CC</span>
-          <span>CareerConnect</span>
-        </Link>
+        <div className="sidebar-top">
+          <Link
+            className="navbar__brand sidebar-brand"
+            to="/recruiter/jobs"
+          >
+            <span className="navbar__logo">CC</span>
+            <span>CareerConnect</span>
+          </Link>
+
+          <NotificationBell userId={user.id} />
+        </div>
 
         <nav
           className="sidebar-navigation"

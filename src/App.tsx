@@ -360,17 +360,6 @@ function App() {
             path="/profile"
             element={<ProfilePage />}
           />
-
-          <Route
-            path="/notifications"
-            element={
-              <PlaceholderPage
-                eyebrow="Stay up to date"
-                title="Notifications"
-                description="Notifications are not implemented yet."
-              />
-            }
-          />
         </Route>
 
         {/* ===================================

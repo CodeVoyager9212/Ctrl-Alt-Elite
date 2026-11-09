@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import type { User } from "@supabase/supabase-js";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import { toDateTimeLocalValue } from "../../lib/applications";
 import type { JobInsert, JobRow } from "../../types/database";
 import "./CreateJobPage.css";
 
@@ -26,6 +27,7 @@ type JobForm = {
   description: string;
   requirements: string;
   responsibilities: string;
+  application_deadline: string;
 };
 
 const initialForm: JobForm = {
@@ -43,6 +45,7 @@ const initialForm: JobForm = {
   description: "",
   requirements: "",
   responsibilities: "",
+  application_deadline: "",
 };
 
 export default function CreateJobPage() {
@@ -52,6 +55,9 @@ export default function CreateJobPage() {
   const [form, setForm] = useState<JobForm>(initialForm);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
+
+  // Today's date as YYYY-MM-DD (earliest allowed deadline).
+  const today = toDateTimeLocalValue(new Date()).slice(0, 10);
 
   function update<K extends keyof JobForm>(
     field: K,
@@ -94,6 +100,13 @@ export default function CreateJobPage() {
       ) {
         return "Enter a valid salary range.";
       }
+    }
+
+    if (
+      form.application_deadline &&
+      form.application_deadline < today
+    ) {
+      return "The application deadline cannot be in the past.";
     }
 
     return null;
@@ -144,6 +157,7 @@ export default function CreateJobPage() {
         form.responsibilities.trim() || null,
       recruiter_id: user.id,
       is_active: true,
+      application_deadline: form.application_deadline || null,
     };
 
     setSaving(true);
@@ -274,6 +288,17 @@ export default function CreateJobPage() {
                 <option>Internship</option>
                 <option>Temporary</option>
               </select>
+            </label>
+            <label>
+              Application deadline
+              <input
+                type="date"
+                min={today}
+                value={form.application_deadline}
+                onChange={(e) =>
+                  update("application_deadline", e.target.value)
+                }
+              />
             </label>
           </div>
         </section>

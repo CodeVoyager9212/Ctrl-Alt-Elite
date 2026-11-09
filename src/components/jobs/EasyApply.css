@@ -81,3 +81,21 @@
   font-size: 13px;
   font-weight: 700;
 }
+
+.easy-apply__save {
+  justify-self: start;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--jobs-green, #285943);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.easy-apply__save:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}

@@ -4,6 +4,7 @@ import type { FormEvent } from "react";
 import { Link, useNavigate, useOutletContext, useParams } from "react-router-dom";
 import type { User } from "@supabase/supabase-js";
 import { supabase } from "../../lib/supabase";
+import { toDateTimeLocalValue } from "../../lib/applications";
 import type { JobRow, JobUpdate } from "../../types/database";
 import "./CreateJobPage.css";
 import "./EditJobPage.css";
@@ -25,6 +26,7 @@ type JobForm = {
   description: string;
   requirements: string;
   responsibilities: string;
+  application_deadline: string;
 };
 
 function toForm(job: JobRow): JobForm {
@@ -43,6 +45,7 @@ function toForm(job: JobRow): JobForm {
     description: job.description,
     requirements: job.requirements ?? "",
     responsibilities: job.responsibilities ?? "",
+    application_deadline: job.application_deadline ?? "",
   };
 }
 
@@ -146,6 +149,17 @@ export default function EditJobPage() {
       }
     }
 
+    // A new deadline cannot be in the past.
+    const today = toDateTimeLocalValue(new Date()).slice(0, 10);
+
+    if (
+      values.application_deadline &&
+      values.application_deadline !== (job?.application_deadline ?? "") &&
+      values.application_deadline < today
+    ) {
+      return "The application deadline cannot be in the past.";
+    }
+
     return null;
   }
 
@@ -179,6 +193,7 @@ export default function EditJobPage() {
       description: form.description.trim(),
       requirements: form.requirements.trim() || null,
       responsibilities: form.responsibilities.trim() || null,
+      application_deadline: form.application_deadline || null,
     };
 
     setSaving(true);
@@ -407,6 +422,17 @@ export default function EditJobPage() {
                   <option key={type} value={type}>{type}</option>
                 ))}
               </select>
+            </label>
+
+            <label>
+              Application deadline
+              <input
+                type="date"
+                value={form.application_deadline}
+                onChange={(e) =>
+                  update("application_deadline", e.target.value)
+                }
+              />
             </label>
           </div>
         </section>

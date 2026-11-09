@@ -4,7 +4,12 @@ import { Link, useOutletContext } from "react-router-dom";
 import type { ApplicationOutletContext } from "../layout/ApplicationLayout";
 import { supabase } from "../../lib/supabase";
 import { formatDate, statusSlug } from "../../lib/applications";
-import type { ApplicationRow, JobRow, ResumeRow } from "../../types/database";
+import type {
+  ApplicationDraftRow,
+  ApplicationRow,
+  JobRow,
+  ResumeRow,
+} from "../../types/database";
 import "./EasyApply.css";
 
 type EasyApplyProps = {
@@ -19,11 +24,13 @@ export default function EasyApply({ job }: EasyApplyProps) {
   const [resumes, setResumes] = useState<ResumeRow[]>([]);
   const [resumeId, setResumeId] = useState("");
   const [application, setApplication] = useState<ApplicationRow | null>(null);
+  const [draft, setDraft] = useState<ApplicationDraftRow | null>(null);
   const [submittedResumeName, setSubmittedResumeName] = useState("");
   const [justApplied, setJustApplied] = useState(false);
   const [isRecruiter, setIsRecruiter] = useState(false);
   const [loading, setLoading] = useState(true);
   const [sending, setSending] = useState(false);
+  const [savingDraft, setSavingDraft] = useState(false);
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -33,11 +40,12 @@ export default function EasyApply({ job }: EasyApplyProps) {
       setLoading(true);
       setError("");
       setApplication(null);
+      setDraft(null);
       setSubmittedResumeName("");
       setResumeId("");
       setJustApplied(false);
 
-      const [resumeResult, applicationResult, profileResult] =
+      const [resumeResult, applicationResult, profileResult, draftResult] =
         await Promise.all([
           supabase
             .from("resumes")
@@ -58,6 +66,14 @@ export default function EasyApply({ job }: EasyApplyProps) {
             .select("account_type")
             .eq("id", user.id)
             .maybeSingle(),
+
+          // Application saved earlier but not submitted.
+          supabase
+            .from("application_drafts")
+            .select("*")
+            .eq("job_id", job.id)
+            .eq("user_id", user.id)
+            .maybeSingle(),
         ]);
 
       if (!active) return;
@@ -65,7 +81,8 @@ export default function EasyApply({ job }: EasyApplyProps) {
       const loadError =
         resumeResult.error ??
         applicationResult.error ??
-        profileResult.error;
+        profileResult.error ??
+        draftResult.error;
 
       if (loadError) {
         setError(
@@ -77,8 +94,18 @@ export default function EasyApply({ job }: EasyApplyProps) {
 
       setResumes(userResumes);
 
-      // Automatically select the primary resume.
-      if (userResumes.length > 0) {
+      const savedDraft = draftResult.data ?? null;
+      setDraft(savedDraft);
+
+      // Select the resume from the saved draft,
+      // otherwise the primary resume.
+      const draftResume = userResumes.find(
+        (resume) => resume.id === savedDraft?.resume_id
+      );
+
+      if (draftResume) {
+        setResumeId(draftResume.id);
+      } else if (userResumes.length > 0) {
         setResumeId(userResumes[0].id);
       }
 
@@ -148,9 +175,54 @@ export default function EasyApply({ job }: EasyApplyProps) {
       return;
     }
 
+    // The database removes the saved draft once the application is sent.
+    setDraft(null);
     setApplication(data);
     setSubmittedResumeName(resume.file_name);
     setJustApplied(true);
+  }
+
+  // Save the application without submitting it.
+  // The database creates an "incomplete application" reminder.
+  async function handleSaveDraft() {
+    const resume = resumes.find((r) => r.id === resumeId);
+
+    if (!resume || savingDraft || sending || draft || error) {
+      return;
+    }
+
+    setError("");
+    setSavingDraft(true);
+
+    const { data, error: insertError } = await supabase
+      .from("application_drafts")
+      .insert({
+        user_id: user.id,
+        job_id: job.id,
+        resume_id: resume.id,
+      })
+      .select("*")
+      .single();
+
+    setSavingDraft(false);
+
+    if (insertError) {
+      if (insertError.code === "23505") {
+        setError("You already saved this application.");
+      } else if (insertError.code === "42501") {
+        setError(
+          "This application can't be saved. Only job seekers can save applications to open jobs using their own résumé."
+        );
+      } else {
+        setError(
+          `Your application was not saved. ${insertError.message}`
+        );
+      }
+
+      return;
+    }
+
+    setDraft(data);
   }
 
   if (loading) {
@@ -270,7 +342,7 @@ export default function EasyApply({ job }: EasyApplyProps) {
           className="easy-apply__select"
           value={resumeId}
           onChange={(e) => setResumeId(e.target.value)}
-          disabled={sending || Boolean(error)}
+          disabled={sending || savingDraft || Boolean(error)}
         >
           {resumes.map((resume) => (
             <option key={resume.id} value={resume.id}>
@@ -286,11 +358,27 @@ export default function EasyApply({ job }: EasyApplyProps) {
           type="button"
           className="button button--primary"
           onClick={() => void handleEasyApply()}
-          disabled={sending || Boolean(error)}
+          disabled={sending || savingDraft || Boolean(error)}
         >
           {sending ? "Sending..." : "Easy Apply"}
         </button>
       </div>
+
+      {draft ? (
+        <p className="easy-apply__muted">
+          Application saved on {formatDate(draft.saved_at)} but not
+          submitted yet. Click Easy Apply to finish.
+        </p>
+      ) : (
+        <button
+          type="button"
+          className="easy-apply__save"
+          onClick={() => void handleSaveDraft()}
+          disabled={sending || savingDraft || Boolean(error)}
+        >
+          {savingDraft ? "Saving..." : "Save and finish later"}
+        </button>
+      )}
 
       {error && (
         <p

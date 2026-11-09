@@ -192,7 +192,8 @@
   overflow-wrap: anywhere;
 }
 
-.recruiter-applicants__section select {
+.recruiter-applicants__section select,
+.recruiter-applicants__section input[type="datetime-local"] {
   width: 100%;
   padding: 12px;
   border-radius: 9px;
@@ -220,7 +221,8 @@
 }
 
 .recruiter-applicants button:focus-visible,
-.recruiter-applicants select:focus-visible {
+.recruiter-applicants select:focus-visible,
+.recruiter-applicants input:focus-visible {
   outline: 3px solid rgba(40, 89, 67, 0.35);
   outline-offset: 2px;
 }

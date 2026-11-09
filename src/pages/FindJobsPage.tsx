@@ -1,5 +1,6 @@
 
 import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { getActiveJobs } from "../services/jobsService";
 import type { JobRow } from "../types/database";
@@ -18,10 +19,10 @@ export default function FindJobsPage() {
   // Jobs retrieved from Supabase
   const [jobs, setJobs] = useState<JobRow[]>([]);
 
-  // Currently selected job
-  const [selectedJobId, setSelectedJobId] = useState<string | null>(
-    null
-  );
+  // Currently selected job (kept in the URL as ?job=<id> so
+  // notifications can open a specific job)
+  const [searchParams, setSearchParams] = useSearchParams();
+  const selectedJobId = searchParams.get("job");
 
   // Search, filtering, and sorting settings
   const [filters, setFilters] = useState<JobFilters>({
@@ -152,11 +153,11 @@ export default function FindJobsPage() {
     null;
 
   function handleSelectJob(job: JobRow) {
-    setSelectedJobId(job.id);
+    setSearchParams({ job: job.id }, { replace: true });
   }
 
   function handleCloseDetails() {
-    setSelectedJobId(null);
+    setSearchParams({}, { replace: true });
   }
 
   return (

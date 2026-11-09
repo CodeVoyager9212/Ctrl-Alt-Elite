@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from "react";
-import { Link, useOutletContext } from "react-router-dom";
+import { Link, useOutletContext, useSearchParams } from "react-router-dom";
 import type { ApplicationOutletContext } from "../components/layout/ApplicationLayout";
 import { supabase } from "../lib/supabase";
 import {
@@ -8,6 +8,7 @@ import {
   STATUS_STEPS,
   daysInStatusLabel,
   formatDate,
+  formatDateTime,
   statusSlug,
 } from "../lib/applications";
 import type {
@@ -57,6 +58,10 @@ function StatusTracker({ status }: { status: ApplicationStatus }) {
 
 function ApplicationsPage() {
   const { user } = useOutletContext<ApplicationOutletContext>();
+
+  // Application opened from a notification (?id=<application id>).
+  const [searchParams] = useSearchParams();
+  const highlightedId = searchParams.get("id");
 
   const [applications, setApplications] = useState<ApplicationRow[]>([]);
   const [jobs, setJobs] = useState<JobRow[]>([]);
@@ -154,6 +159,15 @@ function ApplicationsPage() {
       active = false;
     };
   }, [user.id]);
+
+  // Scroll to the application opened from a notification.
+  useEffect(() => {
+    if (loading || !highlightedId) return;
+
+    document
+      .getElementById(`application-${highlightedId}`)
+      ?.scrollIntoView({ behavior: "smooth", block: "center" });
+  }, [loading, highlightedId]);
 
   // Find job details associated with the application.
   function findJob(jobId: string) {
@@ -259,8 +273,13 @@ function ApplicationsPage() {
 
             return (
               <li
-                className="profile-card app-item"
+                className={
+                  application.id === highlightedId
+                    ? "profile-card app-item app-item--highlight"
+                    : "profile-card app-item"
+                }
                 key={application.id}
+                id={`application-${application.id}`}
               >
                 <div className="app-item__head">
                   <div>
@@ -303,6 +322,14 @@ function ApplicationsPage() {
                   <span>
                     Résumé: {resumeFileName}
                   </span>
+
+                  {application.status === "Interview" &&
+                    application.interview_at && (
+                      <span className="app-item__interview">
+                        Interview:{" "}
+                        {formatDateTime(application.interview_at)}
+                      </span>
+                    )}
                 </div>
               </li>
             );
