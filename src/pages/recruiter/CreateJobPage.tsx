@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import type { FormEvent } from "react";
 import type { User } from "@supabase/supabase-js";
@@ -6,6 +5,7 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
 import type { JobInsert, JobRow } from "../../types/database";
 import "./CreateJobPage.css";
+import { validateJob } from "./jobValidation";
 
 type RecruiterContext = {
   user: User;
@@ -64,39 +64,7 @@ export default function CreateJobPage() {
   }
 
   function validate(): string | null {
-    if (
-      !form.title.trim() ||
-      !form.company_name.trim() ||
-      !form.location.trim() ||
-      !form.category.trim() ||
-      !form.summary.trim() ||
-      !form.description.trim()
-    ) {
-      return "Please fill in all required fields.";
-    }
-
-    const minimum = form.salary_min.trim();
-    const maximum = form.salary_max.trim();
-
-    if (minimum || maximum) {
-      if (!minimum || !maximum) {
-        return "Enter both salary minimum and maximum.";
-      }
-
-      const min = Number(minimum);
-      const max = Number(maximum);
-
-      if (
-        !Number.isFinite(min) ||
-        !Number.isFinite(max) ||
-        min < 0 ||
-        max < min
-      ) {
-        return "Enter a valid salary range.";
-      }
-    }
-
-    return null;
+    return validateJob(form);
   }
 
   async function handleSubmit(
