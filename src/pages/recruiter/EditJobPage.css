@@ -1,0 +1,85 @@
+
+.edit-job__back {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--green);
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.edit-job__back:hover {
+  text-decoration: underline;
+}
+
+.edit-job__status {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  padding: 24px 28px;
+  margin-bottom: 24px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.edit-job__status > div {
+  flex: 1;
+  min-width: 220px;
+}
+
+.edit-job__status strong {
+  color: var(--text);
+  font-size: 16px;
+}
+
+.edit-job__status p {
+  margin: 8px 0 0;
+  color: var(--muted-text);
+  font-size: 13px;
+}
+
+.edit-job__badge {
+  padding: 7px 13px;
+  border-radius: 999px;
+  color: #6c6257;
+  background: #eee9e1;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.edit-job__badge--active {
+  background: #e2f1e8;
+  color: #216b43;
+}
+
+.edit-job__toggle {
+  padding: 11px 17px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: white;
+  color: var(--green);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.edit-job__toggle:hover {
+  background: #edf5ee;
+}
+
+.edit-job__toggle:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.edit-job__success {
+  padding: 14px 18px;
+  border: 1px solid #c7dfcf;
+  border-radius: 10px;
+  background: #eaf5ee;
+  color: #216b43;
+  font-size: 14px;
+}

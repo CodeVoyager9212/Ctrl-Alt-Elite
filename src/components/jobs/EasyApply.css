@@ -1,0 +1,83 @@
+/* Easy Apply box inside the Find Jobs details panel */
+
+.easy-apply {
+  display: grid;
+  gap: 10px;
+}
+
+.easy-apply__label {
+  color: var(--jobs-muted, #718077);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.easy-apply__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.easy-apply__select {
+  flex: 1 1 220px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  background: #fbfcfa;
+  border: 1px solid #dce5da;
+  border-radius: 11px;
+  color: var(--jobs-text, #202d26);
+  font: inherit;
+  font-size: 13px;
+}
+
+.easy-apply__select:focus {
+  border-color: var(--jobs-green, #285943);
+  outline: none;
+}
+
+.easy-apply__muted {
+  margin: 0;
+  color: var(--jobs-muted, #718077);
+  font-size: 13px;
+}
+
+.easy-apply--done {
+  padding: 16px;
+  border: 1px solid #cfe3d3;
+  border-radius: 13px;
+  background: var(--jobs-green-light, #eaf3eb);
+}
+
+.easy-apply__title {
+  margin: 0;
+  color: var(--jobs-green, #285943);
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.easy-apply__details {
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 16px;
+}
+
+.easy-apply__details dt {
+  color: #7a8a7e;
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.easy-apply__details dd {
+  margin: 2px 0 0;
+  color: var(--jobs-text, #202d26);
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.easy-apply__link {
+  color: var(--jobs-green, #285943);
+  font-size: 13px;
+  font-weight: 700;
+}

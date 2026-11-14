@@ -1,0 +1,123 @@
+
+.create-job {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 42px 46px 70px;
+}
+
+.create-job__heading {
+  margin-bottom: 28px;
+}
+
+.create-job__eyebrow {
+  color: var(--green);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.create-job__heading h1 {
+  margin: 8px 0;
+  font-family: Georgia, serif;
+  font-size: 36px;
+  color: var(--text);
+}
+
+.create-job__heading > p:last-child {
+  color: var(--muted-text);
+  line-height: 1.6;
+}
+
+.create-job__form {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.create-job__section {
+  padding: 28px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: var(--white);
+}
+
+.create-job__section h2 {
+  margin: 0 0 16px;
+  font-size: 21px;
+  color: var(--text);
+}
+
+.create-job__section > p {
+  color: var(--muted-text);
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+.create-job__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.create-job__section label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.create-job__section label:last-child {
+  margin-bottom: 0;
+}
+
+.create-job__section input,
+.create-job__section select,
+.create-job__section textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 12px 14px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.create-job__section textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.create-job__section input:focus,
+.create-job__section select:focus,
+.create-job__section textarea:focus {
+  outline: 2px solid var(--green);
+  outline-offset: 1px;
+}
+
+.create-job__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 14px;
+}
+
+@media (max-width: 950px) {
+  .create-job {
+    padding: 30px 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .create-job__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .create-job__section {
+    padding: 20px;
+  }
+}

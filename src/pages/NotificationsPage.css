@@ -1,0 +1,14 @@
+.notifications-card { max-width: 900px; margin-inline: auto; }
+.notifications-header, .notifications-actions, .notifications-list li {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.notifications-header, .notifications-list li { justify-content: space-between; }
+.notifications-list { padding: 0; list-style: none; }
+.notifications-list li { border-top: 1px solid var(--border); padding: 16px 0; }
+.notifications-list h2 { font-size: 1.05rem; margin: 0; }
+.notifications-list h2 small { margin-left: 8px; color: var(--green); }
+.notifications-list p { margin: 6px 0; }
+.notifications-list time { color: var(--muted-text); font-size: .85rem; }
