@@ -90,6 +90,18 @@ On **My Résumés**, choose a PDF up to 5 MB, then choose **Get AI feedback** an
 
 Run `npm test` for the unit tests. The manual scenarios are in [Features 3 and 4 Acceptance Tests](Docs/Sprint%203/Features%203%20and%204%20Acceptance%20Tests.md).
 
+### Enable Sprint 3 AI job matching
+
+Apply `supabase/migrations/202611140001_ai_job_matching.sql` after the existing profile, resume, and jobs schema. Then deploy the dedicated function:
+
+```sh
+supabase functions deploy ai-job-matching --project-ref YOUR_PROJECT_REF
+```
+
+The function uses the platform-provided `SUPABASE_URL`, `SUPABASE_ANON_KEY`, and `SUPABASE_SERVICE_ROLE_KEY` variables. It reuses `GEMINI_API_KEY` and the optional `GEMINI_MODEL` override from resume feedback; the default is `gemini-3.5-flash-lite`. Do not put either server secret in `.env.local` or any `VITE_` variable.
+
+On Find Jobs, saved AI matches load without calling Gemini. Generation and refresh are manual, use the current primary resume and latest relevant profile fields, and have no cooldown. PDF and DOCX primary resumes are supported; legacy DOC files must be converted. See [AI Job Matching - User Story and Acceptance Tests](Docs/Sprint%203/AI%20Job%20Matching%20-%20User%20Story%20and%20Acceptance%20Tests.md) for measurable criteria and demo scenarios.
+
 ---
 ## Repository Link
 GitHub Repository: [CareerConnect](https://github.com/CodeVoyager9212/Ctrl-Alt-Elite)

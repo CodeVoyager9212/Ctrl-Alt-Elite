@@ -7,6 +7,7 @@ import type { JobRow } from "../types/database";
 import JobList from "../components/jobs/JobList";
 import JobDetailsPanel from "../components/jobs/JobDetailsPanel";
 import JobSearchFilters from "../components/jobs/JobSearchFilters";
+import AiJobMatches from "../components/jobs/AiJobMatches";
 import {
   defaultJobFilters,
   type JobFilters,
@@ -146,9 +147,9 @@ export default function FindJobsPage() {
     return results;
   }, [jobs, filters]);
 
-  // Find the selected job from the filtered results
+  // Recommendations can open an eligible job even when search filters hide it.
   const selectedJob =
-    filteredJobs.find((job) => job.id === selectedJobId) ??
+    jobs.find((job) => job.id === selectedJobId) ??
     null;
 
   function handleSelectJob(job: JobRow) {
@@ -162,6 +163,8 @@ export default function FindJobsPage() {
   return (
     <main className="find-jobs-page">
       <div className="find-jobs-page__container">
+        <AiJobMatches onViewJob={handleSelectJob} />
+
         {/* Search and filtering controls */}
         <JobSearchFilters
           filters={filters}
