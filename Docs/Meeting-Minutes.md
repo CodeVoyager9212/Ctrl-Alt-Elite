@@ -169,3 +169,34 @@
 - Think of additional features and layout ideas to discuss at the next meeting.
 - Share suggestions and decide on the final dashboard design as a group.
 - Continue working on the feature during the next meeting.
+--------------------------------------------------------------------------------------------------------------------------------------------
+# Meeting 12 – November 14, 2026
+**Duration:** 2 hours
+
+**Members Present:** Philopater, Peter
+### Discussion
+- Reviewed the overall progress of Sprint 3 and discussed the features completed so far.
+- Checked the remaining requirements and identified what still needed to be finished.
+- Discussed the AI feature and worked on its development.
+- Reviewed the existing features and discussed possible improvements.
+- Agreed to continue working on the remaining tasks before the final Sprint 3 meeting.
+### Decisions/Action Items
+- Continue developing and improving the AI feature.
+- Complete any remaining tasks and fix issues found during testing.
+- Prepare for the final team meeting to review and finalize Sprint 3.
+--------------------------------------------------------------------------------------------------------------------------------------------
+# Meeting 13 – November 15, 2026
+**Duration:** 30 minutes
+
+**Members Present:** Philopater, Peter, Alfred
+### Discussion
+- Conducted a full demonstration of the CareerConnect features developed during Sprint 3.
+- Reviewed the completed features to make sure they worked as expected.
+- Checked the overall progress and discussed whether all Sprint 3 requirements were covered.
+- Identified the final improvements and checks needed before the TA demonstration.
+- Discussed the final preparations for the Sprint 3 submission and demonstration.
+### Decisions/Action Items
+- Complete the remaining minor improvements and fixes.
+- Perform final checks on the features and testing.
+- Make sure the required documentation and GitHub updates are ready.
+- Prepare the project for the Sprint 3 TA demonstration.
