@@ -3,27 +3,27 @@
 ## Philopater
 - Worked on the Recruiter Dashboard and Posting Management feature.
 - Developed features for recruiters to manage job postings and review applications.
-- Collaborated with Arman, Peter, and Alfred on the AI feature.
+- Collaborated with Arman, Peter, and Alfred on the AI features.
 - Participated in team discussions and helped test the features.
 
 ## Peter
 - Worked with Arman and Alfred on the Application Analytics and History Dashboard.
 - Helped develop features to display application history, status, and statistics.
 - Organized user stories and acceptance tests for Sprint 3.
-- Contributed to the development of the AI feature.
+- Contributed to the development of the AI features.
 - Participated in team discussions and helped review and test the features.
 
 ## Alfred
 - Worked with Arman and Peter on the Application Analytics and History Dashboard.
 - Helped develop the application history and statistics features.
-- Collaborated with Arman, Peter, and Philopater on the AI feature.
+- Collaborated with Arman, Peter, and Philopater on the AI features.
 - Participated in team discussions and helped test the features.
 
 ## Arman
 - Worked with Peter and Alfred on the Application Analytics and History Dashboard.
 - Helped develop the application history and statistics features.
 - Maintained the Continuous Integration (CI) pipeline using GitHub Actions.
-- Organized Sprint 3 documentation and contributed to the AI feature.
+- Organized Sprint 3 documentation and contributed to the AI features.
 - Participated in team discussions and helped review and test the features.
 
 ## Anas
