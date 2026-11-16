@@ -14,6 +14,7 @@ type JobForm = {
   title: string;
   company_name: string;
   location: string;
+  application_deadline: string;
   category: string;
   work_mode: JobRow["work_mode"];
   employment_type: JobRow["employment_type"];
@@ -32,6 +33,7 @@ function toForm(job: JobRow): JobForm {
     title: job.title,
     company_name: job.company_name,
     location: job.location,
+    application_deadline: job.application_deadline ?? "",
     category: job.category,
     work_mode: job.work_mode,
     employment_type: job.employment_type,
@@ -168,6 +170,7 @@ export default function EditJobPage() {
       title: form.title.trim(),
       company_name: form.company_name.trim(),
       location: form.location.trim(),
+      application_deadline: form.application_deadline || null,
       category: form.category.trim(),
       work_mode: form.work_mode,
       employment_type: form.employment_type,
@@ -407,6 +410,14 @@ export default function EditJobPage() {
                   <option key={type} value={type}>{type}</option>
                 ))}
               </select>
+            </label>
+            <label>
+              Application deadline (UTC)
+              <input
+                type="date"
+                value={form.application_deadline}
+                onChange={(event) => update("application_deadline", event.target.value)}
+              />
             </label>
           </div>
         </section>

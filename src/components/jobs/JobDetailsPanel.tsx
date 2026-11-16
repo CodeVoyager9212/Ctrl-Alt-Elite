@@ -104,6 +104,12 @@ export default function JobDetailsPanel({
             {job.company_name}
           </p>
 
+          {job.application_deadline && (
+            <p className="job-details__location">
+              Apply by {job.application_deadline} (UTC)
+            </p>
+          )}
+
           <h2 className="job-details__title">
             {job.title}
           </h2>

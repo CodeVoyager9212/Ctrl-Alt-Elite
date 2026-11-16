@@ -2,6 +2,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import type { ApplicationOutletContext } from "../components/layout/ApplicationLayout";
 import { supabase } from "../lib/supabase";
+import ResumeFeedback from "../components/ResumeFeedback";
 import type { ResumeRow } from "../types/database";
 import "./ProfilePage.css";
 import "./ResumePage.css";
@@ -341,6 +342,7 @@ function ResumePage() {
                       Delete
                     </button>
                   </div>
+                  {resume.file_name.toLowerCase().endsWith(".pdf") && <ResumeFeedback resumeId={resume.id} />}
                 </li>
               ))}
             </ul>

@@ -94,17 +94,19 @@ export type JobRow = {
   recruiter_id: string | null;
   posted_at: string;
   is_active: boolean;
+  application_deadline: string | null;
   created_at: string;
 };
 
 export type JobInsert = Omit<
   JobRow,
-  "id" | "created_at" | "posted_at" | "is_active"
+  "id" | "created_at" | "posted_at" | "is_active" | "application_deadline"
 > & {
   id?: string;
   created_at?: string;
   posted_at?: string;
   is_active?: boolean;
+  application_deadline?: string | null;
 };
 
 export type JobUpdate = Partial<JobInsert>;
@@ -156,6 +158,18 @@ export type ApplicationUpdate = {
 // SUPABASE DATABASE TYPES
 // ============================================================
 
+export type NotificationRow = {
+  id: string;
+  recipient_id: string;
+  kind: "application_update" | "interview_invitation" | "deadline_reminder" | "new_application";
+  job_id: string;
+  job_title: string;
+  application_status: ApplicationStatus | null;
+  deadline: string | null;
+  created_at: string;
+  read_at: string | null;
+};
+
 export type Database = {
   public: {
     Tables: {
@@ -177,6 +191,12 @@ export type Database = {
         Update: JobUpdate;
         Relationships: [];
       };
+      notifications: {
+        Row: NotificationRow;
+        Insert: never;
+        Update: Pick<NotificationRow, "read_at">;
+        Relationships: [];
+      };
       applications: {
         Row: ApplicationRow;
         Insert: ApplicationInsert;
@@ -185,6 +205,8 @@ export type Database = {
       };
     };
     Views: Record<string, never>;
-    Functions: Record<string, never>;
+    Functions: {
+      refresh_deadline_reminders: { Args: Record<PropertyKey, never>; Returns: undefined };
+    };
   };
 };

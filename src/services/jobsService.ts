@@ -6,6 +6,7 @@ export async function getActiveJobs(): Promise<JobRow[]> {
     .from("jobs")
     .select("*")
     .eq("is_active", true)
+    .or(`application_deadline.is.null,application_deadline.gte.${new Date().toISOString().slice(0, 10)}`)
     .order("posted_at", { ascending: false });
 
   if (error) {

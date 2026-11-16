@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import type { FormEvent } from "react";
 import type { User } from "@supabase/supabase-js";
@@ -5,7 +6,6 @@ import { useNavigate, useOutletContext } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
 import type { JobInsert, JobRow } from "../../types/database";
 import "./CreateJobPage.css";
-import { validateJob } from "./jobValidation";
 
 type RecruiterContext = {
   user: User;
@@ -15,6 +15,7 @@ type JobForm = {
   title: string;
   company_name: string;
   location: string;
+  application_deadline: string;
   work_mode: JobRow["work_mode"];
   category: string;
   employment_type: JobRow["employment_type"];
@@ -32,6 +33,7 @@ const initialForm: JobForm = {
   title: "",
   company_name: "",
   location: "",
+  application_deadline: "",
   work_mode: "On-site",
   category: "",
   employment_type: "Full-time",
@@ -64,7 +66,39 @@ export default function CreateJobPage() {
   }
 
   function validate(): string | null {
-    return validateJob(form);
+    if (
+      !form.title.trim() ||
+      !form.company_name.trim() ||
+      !form.location.trim() ||
+      !form.category.trim() ||
+      !form.summary.trim() ||
+      !form.description.trim()
+    ) {
+      return "Please fill in all required fields.";
+    }
+
+    const minimum = form.salary_min.trim();
+    const maximum = form.salary_max.trim();
+
+    if (minimum || maximum) {
+      if (!minimum || !maximum) {
+        return "Enter both salary minimum and maximum.";
+      }
+
+      const min = Number(minimum);
+      const max = Number(maximum);
+
+      if (
+        !Number.isFinite(min) ||
+        !Number.isFinite(max) ||
+        min < 0 ||
+        max < min
+      ) {
+        return "Enter a valid salary range.";
+      }
+    }
+
+    return null;
   }
 
   async function handleSubmit(
@@ -90,6 +124,7 @@ export default function CreateJobPage() {
       title: form.title.trim(),
       company_name: form.company_name.trim(),
       location: form.location.trim(),
+      application_deadline: form.application_deadline || null,
       work_mode: form.work_mode,
       category: form.category.trim(),
       employment_type: form.employment_type,
@@ -242,6 +277,14 @@ export default function CreateJobPage() {
                 <option>Internship</option>
                 <option>Temporary</option>
               </select>
+            </label>
+            <label>
+              Application deadline (UTC)
+              <input
+                type="date"
+                value={form.application_deadline}
+                onChange={(event) => update("application_deadline", event.target.value)}
+              />
             </label>
           </div>
         </section>

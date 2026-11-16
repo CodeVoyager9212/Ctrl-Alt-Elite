@@ -194,3 +194,35 @@
     padding: 10px 8px;
   }
 }
+
+.sidebar-brand-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-right: -10px;
+  margin-bottom: 22px;
+}
+
+.sidebar-brand-row .sidebar-brand {
+  min-width: 0;
+  margin-bottom: 0;
+  font-size: clamp(15px, 2vw, 18px);
+}
+
+
+.sidebar-brand-row .navbar__logo {
+  flex-shrink: 0;
+}
+
+@media (max-width: 700px) {
+  .sidebar-brand-row {
+    grid-column: 1 / -1;
+    margin-right: 0;
+    margin-bottom: 0;
+  }
+
+  .sidebar-brand-row .sidebar-brand span:last-child {
+    display: inline;
+  }
+}

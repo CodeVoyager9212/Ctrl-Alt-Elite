@@ -1,3 +1,4 @@
+import NotificationsPage from "./pages/NotificationsPage";
 
 import { useEffect, useState } from "react";
 import type { ReactNode } from "react";
@@ -16,6 +17,7 @@ import ProfilePage from "./pages/ProfilePage";
 import ResumePage from "./pages/ResumePage";
 import FindJobsPage from "./pages/FindJobsPage";
 import ApplicationsPage from "./pages/ApplicationsPage";
+import DashboardPage from "./pages/DashboardPage";
 import PlaceholderPage from "./pages/PlaceholderPage";
 import RecruiterJobsPage from "./pages/recruiter/RecruiterJobsPage";
 import CreateJobPage from "./pages/recruiter/CreateJobPage";
@@ -65,7 +67,7 @@ function ProfileError({ message }: { message: string }) {
 function getHomePath(role: AccountType) {
   return role === "recruiter"
     ? "/recruiter/jobs"
-    : "/profile";
+    : "/dashboard";
 }
 
 function resolveAccount({
@@ -321,13 +323,7 @@ function App() {
         >
           <Route
             path="/dashboard"
-            element={
-              <PlaceholderPage
-                eyebrow="Your workspace"
-                title="Dashboard"
-                description="Your CareerConnect overview will appear here."
-              />
-            }
+            element={<DashboardPage />}
           />
 
           <Route
@@ -363,13 +359,7 @@ function App() {
 
           <Route
             path="/notifications"
-            element={
-              <PlaceholderPage
-                eyebrow="Stay up to date"
-                title="Notifications"
-                description="Notifications are not implemented yet."
-              />
-            }
+            element={<NotificationsPage />}
           />
         </Route>
 
@@ -420,6 +410,8 @@ function App() {
             path="/recruiter/jobs/:jobId/applicants"
             element={<JobApplicantsPage />}
           />
+
+          <Route path="/recruiter/notifications" element={<NotificationsPage />} />
 
           <Route
             path="/recruiter/profile"

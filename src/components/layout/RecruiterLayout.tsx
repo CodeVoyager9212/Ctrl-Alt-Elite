@@ -8,6 +8,7 @@ import {
   useNavigate,
 } from "react-router-dom";
 import { supabase } from "../../lib/supabase";
+import NotificationBell from "../notifications/NotificationBell";
 import "./ApplicationLayout.css";
 
 type RecruiterLayoutProps = {
@@ -25,6 +26,7 @@ const RECRUITER_NAVIGATION = [
     path: "/recruiter/jobs/new",
     icon: "+",
   },
+  { label: "Notifications", path: "/recruiter/notifications", icon: "◷" },
   {
     label: "Profile",
     path: "/recruiter/profile",
@@ -97,13 +99,16 @@ export default function RecruiterLayout({
   return (
     <div className="application-layout">
       <aside className="application-sidebar">
-        <Link
-          className="navbar__brand sidebar-brand"
-          to="/recruiter/jobs"
-        >
-          <span className="navbar__logo">CC</span>
-          <span>CareerConnect</span>
-        </Link>
+        <div className="sidebar-brand-row">
+          <Link
+            className="navbar__brand sidebar-brand"
+            to="/recruiter/jobs"
+          >
+            <span className="navbar__logo">CC</span>
+            <span>CareerConnect</span>
+          </Link>
+          <NotificationBell userId={user.id} inboxPath="/recruiter/notifications" />
+        </div>
 
         <nav
           className="sidebar-navigation"

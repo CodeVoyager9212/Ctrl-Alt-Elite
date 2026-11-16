@@ -33,7 +33,7 @@ function LoginPage() {
         return;
       }
 
-      navigate("/profile", { replace: true });
+      navigate("/dashboard", { replace: true });
     } catch {
       setErrorMessage(
         "Unable to reach the authentication service. Please try again.",
