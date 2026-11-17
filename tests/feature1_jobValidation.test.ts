@@ -1,6 +1,6 @@
 
 import { describe, expect, it } from "vitest";
-import { validateJob } from "./jobValidation";
+import { validateJob } from "../src/pages/recruiter/jobValidation";
 
 const validJob = {
   title: "Software Developer",

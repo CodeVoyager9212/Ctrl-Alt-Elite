@@ -1,6 +1,6 @@
 
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { getActiveJobs } from "./jobsService";
+import { getActiveJobs } from "../src/services/jobsService";
 
 // Mock the Supabase database operations
 const { mockFrom, mockSelect, mockEq, mockOr, mockOrder } = vi.hoisted(() => ({
@@ -11,7 +11,7 @@ const { mockFrom, mockSelect, mockEq, mockOr, mockOrder } = vi.hoisted(() => ({
   mockOrder: vi.fn(),
 }));
 
-vi.mock("../lib/supabase", () => ({
+vi.mock("../src/lib/supabase", () => ({
   supabase: {
     from: mockFrom,
   },
