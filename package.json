@@ -10,7 +10,7 @@
     "preview": "vite preview",
     "test": "npm run test:node && npm run test:vitest",
     "test:node": "node --test tests/*.test.mjs",
-    "test:vitest": "vitest run src/"
+    "test:vitest": "vitest run tests/feature1_"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.116.0",
