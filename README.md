@@ -1,8 +1,11 @@
 # Ctrl-Alt-Elite
 ### SOEN 341 - Software Process
 ### CareerConnect
+
 ---
+
 ## Team Members
+
 **Full Name, ID:** Philopater Salama (40229661)  
 **GitHub Username:** CodeVoyager9212
 
@@ -18,22 +21,26 @@
 **Full Name, ID:** Anas Lahna (40285401)  
 **GitHub Username:** Lahanas
 
-**Full Name, ID:** Omar El Akrae  (40252799)  
+**Full Name, ID:** Omar El Akrae (40252799)  
 **GitHub Username:** Omar01-E
 
 ---
+
 ## Project Description
-CareerConnect is a website for finding jobs and tracking applications that helps job seekers keep track of their career path all in one place. Users are able to make profiles, upload their résumés, find jobs, save jobs, apply to jobs, and track their process with different states including Applied, Interview, Offered, and Rejected. Recruiters are able to post and manage job listings, review applicants, and change the application states. CareerConnect will also have a Generative AI component for résumé feedback or suggested job matches.
+CareerConnect is a website for finding jobs and tracking applications that helps job seekers keep track of their career path all in one place. Users are able to make profiles, upload their résumés, find jobs, save jobs, apply to jobs, and track their process with different states including Applied, Interview, Offered, and Rejected. Recruiters are able to post and manage job listings, review applicants, and change the application states. CareerConnect will also include two Generative AI features: AI-powered résumé feedback and AI-based job matching suggestions.
 
 ---
+
 ## Identified Problem
 Job seekers often use different websites and tools to search for jobs, manage their resumes, and keep track of their applications. As the number of applications increases, it can become difficult to remember which jobs were applied to, their current status, and what steps need to be taken next. Recruiters also need an organized way to post jobs and manage applicants.
 
 ---
+
 ## Proposed Solution
-CareerConnect provides one platform where job seekers can manage their job search and applications. Users can create a profile, upload their resume, search and save jobs, apply for positions, and track the status of each application. Recruiters can post job opportunities and manage applicants. The platform will also include a Generative AI feature to provide resume feedback or suggest job matches.
+CareerConnect provides one platform where job seekers can manage their job search and applications. Users can create a profile, upload their resume, search and save jobs, apply for positions, and track the status of each application. Recruiters can post job opportunities and manage applicants. The platform will also include two Generative AI features to provide résumé feedback and suggest relevant job matches.
 
 ---
+
 ## Proposed Features
 ### Main Features
 - User registration and authentication
@@ -46,13 +53,15 @@ CareerConnect provides one platform where job seekers can manage their job searc
 - Application history
 - Notifications and reminders
 - Saved jobs
-- Generative AI for resume feedback or job matching
+- Generative AI for résumé feedback and job matching
 
 ### Additional Proposed Features
 - **Job Application Streaks:** Allow users to build a streak by consistently applying for jobs and track their progress over time.
 - **Application Map:** Show the locations of companies the user has applied to on a map for better visualization.
 - **Job Comparison:** Allow users to compare multiple job opportunities side by side, such as salary, location, requirements, and other important information.
+
 ---
+
 ## Technologies
 ### Frontend
 - **React:** Used to build the user interface and create the different pages and components of the website.
@@ -68,6 +77,19 @@ CareerConnect provides one platform where job seekers can manage their job searc
 
 ## Setup Instructions
 To run CareerConnect, make sure Git, Node.js, and npm are installed. Clone the repository and open the project folder, then run `npm ci` to install the required dependencies. Create a `.env.local` file and add the Supabase URL and publishable key to connect the application to the backend. The required database setup is included in the Supabase migration file in the repository. Finally, run `npm run dev` and open the local address shown in the terminal to access CareerConnect.
+
+---
+
+## Repository Structure
+The CareerConnect repository is organized into the following main directories:
+- **`src/`** – Contains the frontend source code, including pages, components, services, and types.
+- **`supabase/`** – Contains backend functions and database migrations.
+- **`tests/`** – Contains unit tests for the application's functionality.
+- **`Docs/`** – Contains sprint documentation, meeting minutes, contribution logs, and AI usage logs.
+- **`.github/workflows/`** – Contains GitHub Actions workflows for Continuous Integration.
+- **`public/`** – Contains public assets used by the application.
+
+This structure separates application code, testing, documentation, and configuration files to keep the project organized and maintainable.
 
 ---
 
