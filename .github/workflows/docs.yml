@@ -1,0 +1,47 @@
+
+name: CareerConnect - Documentation
+
+on:
+  push:
+    paths:
+      - 'Docs/**'
+      - 'README.md'
+      - '.github/workflows/docs.yml'
+  pull_request:
+    paths:
+      - 'Docs/**'
+      - 'README.md'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  documentation-check:
+    name: Documentation Validation
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required files
+        run: |
+          test -f README.md
+          test -d Docs
+
+      - name: Check Markdown files for trailing whitespace
+        run: |
+          find Docs -type f -name "*.md" -print0 |
+            xargs -0 -r grep -nH '[[:blank:]]$' && exit 1 || exit 0
+
+      - name: Validate PDF files
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y poppler-utils
+          find Docs -type f -iname "*.pdf" -print0 |
+            while IFS= read -r -d '' file; do
+              echo "Checking: $file"
+              pdfinfo "$file" > /dev/null || exit 1
+            done
