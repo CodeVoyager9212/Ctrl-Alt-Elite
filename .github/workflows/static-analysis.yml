@@ -1,0 +1,49 @@
+
+name: CareerConnect - Static Analysis
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - 'supabase/functions/**'
+      - '.github/workflows/static-analysis.yml'
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'supabase/functions/**'
+      - '.github/workflows/static-analysis.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  static-analysis:
+    name: Semgrep Static Analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install Semgrep
+        run: pipx install semgrep
+
+      - name: Run static analysis
+        run: |
+          semgrep scan \
+            --config p/javascript \
+            --config p/typescript \
+            --config p/security-audit \
+            --metrics=off \
+            --json \
+            --output semgrep-report.json \
+            src/ supabase/functions/
+
+      - name: Upload analysis report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: semgrep-analysis-report
+          path: semgrep-report.json
+          if-no-files-found: warn
