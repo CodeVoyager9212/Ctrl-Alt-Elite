@@ -1,4 +1,6 @@
-# Meeting 1 – September 15, 2026
+# Sprint 1 — Meeting Minutes
+
+## Meeting 1 – September 15, 2026
 **Duration:** 2 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman
@@ -11,7 +13,7 @@
 - Think of possible technologies and additional features for the project.
 - Continue setting up the GitHub repository during the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 2 – September 17, 2026
+## Meeting 2 – September 17, 2026
 **Duration:** 2 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman
@@ -27,7 +29,7 @@
 - Everyone should keep their personal AI log updated using the required format.
 - Review everyone's features and user stories at the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 3 – September 19, 2026
+## Meeting 3 – September 19, 2026
 **Duration:** 1 hour
 
 **Members Present:** Philopater, Peter, Arman, Anas
@@ -42,7 +44,7 @@
 - **Group 3 – Arman & Alfred:** General website UI, excluding the profile page.
 - Each group should begin working on their assigned part and progress will be discussed during the upcoming meetings.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 4 – September 20, 2026
+## Meeting 4 – September 20, 2026
 **Duration:** 3 hours
 
 **Members Present:** Philopater, Peter
@@ -62,8 +64,8 @@
 - Test the sign-up and login functionality to make sure accounts are correctly created and authenticated through Supabase.
 - Continue improving the UI and completing the remaining parts of the assigned Sprint 1 feature.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 5 – September 27, 2026
-**Duration:** 4 hour
+## Meeting 5 – September 27, 2026
+**Duration:** 4 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman, Omar
 ### Discussion
@@ -79,7 +81,9 @@
 - Perform a final review of the project before submission.
 - Submit the completed Sprint 1 work before the deadline.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 6 – October 15, 2026
+# Sprint 2 — Meeting Minutes
+
+## Meeting 6 – October 15, 2026
 **Duration:** 1 hour
 
 **Members Present:** Philopater, Peter, Alfred, Arman, Anas
@@ -93,7 +97,7 @@
 - Each group will review its feature requirements and prepare an initial plan or draft.
 - Share the initial ideas at the next team meeting before starting the main development work.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 7 – October 16, 2026
+## Meeting 7 – October 16, 2026
 **Duration:** 1 hour
 
 **Members Present:** Philopater, Peter
@@ -107,7 +111,7 @@
 - Think of possible design and implementation ideas.
 - Share the proposed task breakdown and ideas with the rest of the team at the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 8 – October 20, 2026
+## Meeting 8 – October 20, 2026
 **Duration:** 4 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman
@@ -117,12 +121,13 @@
 - Team members started working on their assigned tasks and shared their progress during the meeting.
 - Discussed questions and possible challenges related to the implementation.
 - Reviewed the remaining tasks and what needed to be completed before the final meeting.
+
 ### Decisions/Action Items
 - Continue developing the assigned features based on the agreed plans.
 - Communicate with other members when help or changes are needed.
 - Update the team on progress and prepare the completed work for review at the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 9 – October 25, 2026
+## Meeting 9 – October 25, 2026
 **Duration:** 5 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman, Omar
@@ -138,8 +143,10 @@
 - Finalize the required Sprint 2 documentation and contribution logs.
 - Review the project one last time before submission and prepare to demonstrate the completed features.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 10 – November 3, 2026
-**Duration:** 2 hour
+# Sprint 3 — Meeting Minutes
+
+## Meeting 10 – November 3, 2026
+**Duration:** 2 hours
 
 **Members Present:** Philopater, Peter, Alfred, Arman
 ### Discussion
@@ -154,7 +161,7 @@
 - Continue updating GitHub Issues and tracking progress throughout the sprint.
 - Discuss and plan the AI feature in more detail at a future meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 11 – November 7, 2026
+## Meeting 11 – November 7, 2026
 **Duration:** 2 hours
 
 **Members Present:** Peter, Alfred, Arman
@@ -170,7 +177,7 @@
 - Share suggestions and decide on the final dashboard design as a group.
 - Continue working on the feature during the next meeting.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 12 – November 14, 2026
+## Meeting 12 – November 14, 2026
 **Duration:** 2 hours
 
 **Members Present:** Philopater, Peter
@@ -185,7 +192,7 @@
 - Complete any remaining tasks and fix issues found during testing.
 - Prepare for the final team meeting to review and finalize Sprint 3.
 --------------------------------------------------------------------------------------------------------------------------------------------
-# Meeting 13 – November 15, 2026
+## Meeting 13 – November 15, 2026
 **Duration:** 30 minutes
 
 **Members Present:** Philopater, Peter, Alfred
@@ -200,3 +207,5 @@
 - Perform final checks on the features and testing.
 - Make sure the required documentation and GitHub updates are ready.
 - Prepare the project for the Sprint 3 TA demonstration.
+--------------------------------------------------------------------------------------------------------------------------------------------
+# Sprint 4 — Meeting Minutes
